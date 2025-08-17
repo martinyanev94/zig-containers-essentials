@@ -1,0 +1,3 @@
+fn arraySize(comptime size: usize) []u32 {
+    return [_]u32{ 0 } ** size;
+}
