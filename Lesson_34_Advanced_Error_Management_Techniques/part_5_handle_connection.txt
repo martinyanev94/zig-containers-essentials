@@ -1,0 +1,15 @@
+pub fn handleConnection() !void {
+    const connection = try acceptConnection();
+    defer {
+        // Always ensure the connection is closed,
+        // even if an error occurs in processing
+        const closeError = closeConnection(connection);
+        if (closeError) {
+            std.debug.print("Closing connection failed: {}\n", .{closeError});
+        }
+    }
+
+    // Main connection handling logic goes here
+
+    return error.ConnectionFailed; // Example of error handling
+}
