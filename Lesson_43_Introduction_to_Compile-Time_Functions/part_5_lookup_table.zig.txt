@@ -1,0 +1,20 @@
+const std = @import("std");
+
+const LookupTable = comptime struct {
+    data: [10]u32,
+
+    pub fn generate() LookupTable {
+        var table: LookupTable = .{ .data = .{} };
+        for (table.data) |*item, i| {
+            item.* = i * i; // Squaring index
+        }
+        return table;
+    }
+};
+
+pub fn main() void {
+    const lookup = LookupTable.generate();
+    for (lookup.data) |item| {
+        std.debug.print("Lookup value: {}\n", .{item});
+    }
+}
