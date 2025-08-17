@@ -1,0 +1,9 @@
+test "test addition" {
+    const result = 3 + 2;
+    std.testing.expect(result == 5);
+}
+
+test "test subtraction" {
+    const result = 5 - 2;
+    std.testing.expect(result == 3);
+}
