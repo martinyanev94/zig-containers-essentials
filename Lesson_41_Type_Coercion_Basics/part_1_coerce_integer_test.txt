@@ -1,0 +1,8 @@
+const std = @import("std");
+const expect = std.testing.expect;
+
+test "coercing large integer type to smaller one when value is comptime-known to fit" {
+    const x: u64 = 255; // This is a large integer type.
+    const y: u8 = x; // Automatically coerced to a smaller integer type.
+    try expect(y == 255); // Here we expect that y is indeed 255.
+}
