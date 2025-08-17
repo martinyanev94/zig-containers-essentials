@@ -1,0 +1,35 @@
+const std = @import("std");
+
+const PoolAllocator = struct {
+    allocator: *std.mem.Allocator,
+    used_count: usize,
+    max_size: usize,
+
+    pub fn init(allocator: *std.mem.Allocator, max_size: usize) PoolAllocator {
+        return PoolAllocator{
+            .allocator = allocator,
+            .used_count = 0,
+            .max_size = max_size,
+        };
+    }
+
+    pub fn allocate(self: *PoolAllocator, size: usize) !*u8 {
+        if (self.used_count + size > self.max_size) {
+            return error.OutOfMemory;
+        }
+        self.used_count += size;
+        return try self.allocator.alloc(u8, size);
+    }
+};
+
+pub fn main() !void {
+    const allocator = std.heap.page_allocator;
+    var pool = PoolAllocator.init(allocator, 1024);
+    
+    const array = try pool.allocate(100);
+    std.debug.print("Allocated memory at: {}\n", .{array});
+    
+    // Clean up and reset the used count
+    pool.used_count -= 100;
+    allocator.destroy(array);
+}
