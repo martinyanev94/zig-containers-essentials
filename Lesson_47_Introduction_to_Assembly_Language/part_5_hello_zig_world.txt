@@ -1,0 +1,25 @@
+const std = @import("std");
+
+pub fn main() void {
+    const msg = "Hello, Zig World!\n";
+    const len = @intFromPtr(msg) + 16; // Calculating message length
+
+    // System call to write
+    asm volatile (
+        "mov rax, 1\n"      // syscall number for sys_write
+        "mov rdi, 1\n"      // file descriptor 1 is stdout
+        "mov rsi, %[msg]\n" // pointer to message
+        "mov rdx, %[len]\n" // message length
+        "syscall\n"
+        :
+        : [msg] "r"(msg), [len] "r"(len)
+        : "rax", "rdi", "rsi", "rdx"
+    );
+    
+    // Exit program
+    asm volatile (
+        "mov rax, 60\n"     // syscall number for sys_exit
+        "xor rdi, rdi\n"    // Exit code 0
+        "syscall"
+    );
+}
