@@ -1,0 +1,15 @@
+const std = @import("std");
+
+pub fn main() void {
+    var result: u32 = 0;
+    const a: u32 = 10;
+    const b: u32 = 20;
+
+    asm volatile (
+        "add %1, %0"
+        : "=r"(result) // Output operand
+        : "r"(b), "0"(a) // Input operands; note that "0" indicates we're using the previous output value, which is initially set to 'a'
+    );
+
+    std.debug.print("Sum of {} and {} is: {}\n", .{a, b, result});
+}
