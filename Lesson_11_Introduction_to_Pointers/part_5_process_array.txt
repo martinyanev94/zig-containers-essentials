@@ -1,0 +1,18 @@
+const std = @import("std");
+
+fn processArray(arr: *[5]i32) void {
+    for (arr) |*item| {
+        // Modify item directly through pointer
+        item.* += 5;
+    }
+}
+
+pub fn main() void {
+    var arr: [5]i32 = [5]i32{1, 2, 3, 4, 5};
+    processArray(&arr); // Pass a pointer to the array
+
+    std.debug.print("Processed array: ");
+    for (arr) |item| {
+        std.debug.print("{} ", .{item});
+    }
+}
