@@ -1,0 +1,22 @@
+const std = @import("std");
+
+const Rectangle = struct {
+    width: u32,
+    height: u32,
+
+    pub fn area(self: Rectangle) u32 {
+        return self.width * self.height;
+    }
+
+    pub fn perimeter(self: Rectangle) u32 {
+        return 2 * (self.width + self.height);
+    }
+};
+
+const rect1 = Rectangle{ .width = 10, .height = 5 };
+const area1 = rect1.area();
+const perimeter1 = rect1.perimeter();
+
+pub fn main() void {
+    std.debug.print("Area: {}, Perimeter: {}\n", .{area1, perimeter1});
+}
