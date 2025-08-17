@@ -1,0 +1,12 @@
+const std = @import("std");
+
+pub fn main() void {
+    const prices: [5]f64 = .{100.0, 105.0, 102.0, 108.0, 110.0};
+    var stdout = std.io.getStdOut().writer();
+    
+    for (prices[0..prices.len - 1]) |price, index| {
+        const next_price = prices[index + 1];
+        const log_return = @ln(next_price / price);
+        stdout.print("The logarithmic return from {} to {} is {}\n", .{price, next_price, log_return});
+    }
+}
