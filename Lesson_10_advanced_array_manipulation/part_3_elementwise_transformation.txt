@@ -1,0 +1,17 @@
+const std = @import("std");
+const expect = std.testing.expect;
+
+test "element-wise transformation" {
+    const original = [_]i32{1, 2, 3, 4, 5};
+    var squared: [5]i32 = undefined;
+
+    for (original) |num, idx| {
+        squared[idx] = num * num;
+    }
+
+    try expect(squared[0] == 1);
+    try expect(squared[1] == 4);
+    try expect(squared[2] == 9);
+    try expect(squared[3] == 16);
+    try expect(squared[4] == 25);
+}
