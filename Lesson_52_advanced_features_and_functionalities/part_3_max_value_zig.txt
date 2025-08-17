@@ -1,0 +1,17 @@
+const std = @import("std");
+
+fn maxValue(comptime T: type, arr: []const T) T {
+    var max = arr[0];
+    for (arr) |value| {
+        if (value > max) {
+            max = value;
+        }
+    }
+    return max;
+}
+
+pub fn main() void {
+    const nums = [_]u32{5, 3, 9, 1, 4};
+    const maxNum = maxValue(u32, nums);
+    std.debug.print("Maximum number is: {}\n", .{maxNum});
+}
