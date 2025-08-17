@@ -1,0 +1,8 @@
+fn describeNumber(value: i32) void {
+    switch (value) {
+        1 => std.debug.print("One\n", .{}),
+        2 => std.debug.print("Two\n", .{}),
+        3 => std.debug.print("Three\n", .{}),
+        else => std.debug.print("Not One, Two, or Three\n", .{}),
+    }
+}
