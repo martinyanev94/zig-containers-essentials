@@ -1,0 +1,9 @@
+const std = @import("std");
+
+test "file read test" {
+    const file = std.fs.File.openRead("testfile.txt") catch return error.FileNotFound;
+    defer file.close(); // Clean up opened file
+
+    const data = file.readToEndAlloc(std.heap.page_allocator) catch return error.ReadFailed;
+    std.testing.expect(std.mem.startsWith(data, "Expected content"));
+}
