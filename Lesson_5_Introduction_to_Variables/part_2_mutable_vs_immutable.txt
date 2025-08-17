@@ -1,0 +1,13 @@
+const std = @import("std");
+
+pub fn main() void {
+    var count: i32 = 10; // Mutable variable
+    const limit: i32 = 100; // Immutable variable
+
+    // Let's attempt to change both values
+    count += 5; // This is valid
+    // limit += 5; // This would cause a compile-time error because limit is constant
+
+    std.debug.print("Count: {}\n", .{count});
+    std.debug.print("Limit: {}\n", .{limit});
+}
