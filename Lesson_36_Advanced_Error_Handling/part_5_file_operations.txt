@@ -1,0 +1,11 @@
+const std = @import("std");
+
+pub fn main() !void {
+    var file = try openFile("example.txt");
+    errdefer file.close();  // Automatically closes file on error
+
+    // Additional operations with file...
+    // If an error occurs in this block, file will be closed.
+
+    std.debug.print("Successfully processed the file\n", .{});
+}
