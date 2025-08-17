@@ -1,0 +1,16 @@
+const std = @import("std");
+
+fn generate_array(size: usize) []u32 {
+    var arr: [10]u32 = undefined;
+    for (std.range(0, size)) |i| {
+        arr[i] = @intCast(u32, i);
+    }
+    return arr[0..size];
+}
+
+pub fn main() void {
+    const array = generate_array(5);
+    for (array) |value| {
+        std.debug.print("{} ", .{value});
+    }
+}
