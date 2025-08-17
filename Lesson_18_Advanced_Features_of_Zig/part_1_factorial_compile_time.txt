@@ -1,0 +1,14 @@
+const std = @import("std");
+
+const N: usize = 10;
+const factorial = compute_factorial(N);
+
+// This function calculates factorial at compile time
+fn compute_factorial(n: u32) u32 {
+    if (n == 0) return 1;
+    return n * compute_factorial(n - 1);
+}
+
+pub fn main() void {
+    std.debug.print("Factorial of {} is {}\n", .{N, factorial});
+}
