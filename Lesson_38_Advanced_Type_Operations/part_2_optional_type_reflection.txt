@@ -1,0 +1,15 @@
+const std = @import("std");
+
+fn getOptionalTypeValue(value: ?u32) void {
+    if (value) |v| {
+        const _type = @TypeOf(v); // Using reflection to get the type
+        std.debug.print("Value: {}, Type: {}\n", .{v, _type});
+    } else {
+        std.debug.print("No value present.\n", .{});
+    }
+}
+
+pub fn main() void {
+    const optionalValue: ?u32 = 42;
+    getOptionalTypeValue(optionalValue);
+}
