@@ -1,0 +1,13 @@
+const std = @import("std");
+const expect = std.testing.expect;
+
+fn operateOnArray(arr: []u8) u8 {
+    return arr[0] + arr[1];
+}
+
+test "coercion between array and slice" {
+    const array: [3]u8 = .{ 1, 2, 3 };
+    const result = operateOnArray(array); // Implicitly coerced to a slice.
+    
+    try expect(result == 3); // 1 + 2 = 3
+}
