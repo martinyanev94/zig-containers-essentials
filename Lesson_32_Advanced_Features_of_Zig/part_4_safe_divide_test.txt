@@ -1,0 +1,19 @@
+const std = @import("std");
+
+fn safeDivide(numerator: i32, denominator: i32) !f64 {
+    if (denominator == 0) {
+        return error.DivisionByZero;
+    }
+    return @intToFloat(f64, numerator) / @intToFloat(f64, denominator);
+}
+
+test "test safe divide function" {
+    const result = safeDivide(10, 2);
+    try std.testing.expect(result == 5.0);
+    
+    const err = safeDivide(10, 0);
+    switch (err) {
+        error.DivisionByZero => {},
+        else => unreachable,
+    }
+}
