@@ -1,0 +1,23 @@
+const Point = struct {
+    x: i32,
+    y: i32,
+
+    pub fn new(x: i32, y: i32) Point {
+        return Point{x, y};
+    },
+
+    pub fn distance(self: Point, other: Point) f64 {
+        const dx = self.x - other.x;
+        const dy = self.y - other.y;
+        return @sqrt(f64(dx * dx + dy * dy));
+    },
+};
+const std = @import("std");
+
+pub fn main() void {
+    const p1 = Point.new(2, 3);
+    const p2 = Point.new(5, 7);
+    
+    const dist = p1.distance(p2);
+    std.debug.print("Distance between points: {}\n", .{dist});
+}
