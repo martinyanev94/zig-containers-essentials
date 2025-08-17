@@ -1,0 +1,18 @@
+const std = @import("std");
+
+pub fn main() void {
+    var x: ?*i32 = null; // Nullable pointer
+
+    if (x) |value| {
+        std.debug.print("Value at pointer: {}\n", .{*value});
+    } else {
+        std.debug.print("Pointer is null, no value to access.\n");
+    }
+
+    const value: i32 = 42;
+    x = &value; // Assign a valid address
+
+    if (x) |value| {
+        std.debug.print("Value at pointer: {}\n", .{*value});
+    }
+}
