@@ -1,0 +1,16 @@
+fn fibonacci(n: comptime u32) []u32 {
+    var sequence = [_]u32{0, 1};
+    for (2..n) |i| {
+        sequence[i] = sequence[i - 1] + sequence[i - 2];
+    }
+    return sequence[0..n];
+}
+
+pub fn main() void {
+    const fib_sequence = fibonacci(10);
+    
+    for (fib_sequence) |num| {
+        std.debug.print("{} ", .{num});
+    }
+    std.debug.print("\n");
+}
