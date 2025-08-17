@@ -1,0 +1,10 @@
+const std = @import("std");
+
+pub fn main() void {
+    const numbers = [_]u32{1, 2, 3, 4, 5};
+    const slice = numbers[1..4]; // Slice of the original array
+
+    for (slice) |item| {
+        std.debug.print("{}\n", .{item});
+    }
+}
