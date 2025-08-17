@@ -1,0 +1,9 @@
+const std = @import("std");
+
+pub fn main() void {
+    const a: i32 = 10;
+    const b: i32 = 4;
+    const difference = a - b;
+
+    std.debug.print("10 - 4 = {}\n", .{difference});
+}
