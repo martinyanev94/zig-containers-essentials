@@ -1,0 +1,21 @@
+const std = @import("std");
+
+const State = enum {
+    Idle,
+    Running,
+    Stopped,
+};
+
+fn handleState(state: State) void {
+    switch (state) {
+        State.Idle => std.debug.print("System is idle.\n", .{}),
+        State.Running => std.debug.print("System is running.\n", .{}),
+        State.Stopped => std.debug.print("System has stopped.\n", .{}),
+    }
+}
+
+pub fn main() void {
+    for (State) |state| {
+        handleState(state);
+    }
+}
