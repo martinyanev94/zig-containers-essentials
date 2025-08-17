@@ -1,0 +1,4 @@
+fn safeDivision(numerator: i32, denominator: i32) !f64 {
+    try if (denominator == 0) return error.DivideByZero;
+    return @intCast(f64, numerator) / @intCast(f64, denominator);
+}
