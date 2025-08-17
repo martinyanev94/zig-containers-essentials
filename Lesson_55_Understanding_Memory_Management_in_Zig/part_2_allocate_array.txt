@@ -1,0 +1,21 @@
+const std = @import("std");
+
+pub fn allocateArray(allocator: *std.mem.Allocator, count: usize) !*i32 {
+    const array = try allocator.create(i32, count);
+    return array;
+}
+
+pub fn main() !void {
+    const allocator = std.heap.page_allocator;
+
+    const array = try allocateArray(allocator, 5);
+    for (array) |*elem, index| {
+        elem.* = @intCast(i32, index * 10);
+    }
+
+    for (array) |elem| {
+        std.debug.print("{} ", .{elem});
+    }
+
+    allocator.destroy(array); // Ensuring we clean up
+}
