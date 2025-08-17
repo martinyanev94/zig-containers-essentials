@@ -1,0 +1,19 @@
+const std = @import("std");
+
+pub fn main() !void {
+    const allocator = std.heap.page_allocator;
+    
+    const count: usize = 10;
+    const array = try allocator.create(i32, count);
+    
+    for (array) |*elem, index| {
+        elem.* = @intCast(i32, index);
+    }
+    
+    // using the array: let's print the contents
+    for (array) |elem| {
+        std.debug.print("{} ", .{elem});
+    }
+    
+    allocator.destroy(array); // Clean up memory
+}
