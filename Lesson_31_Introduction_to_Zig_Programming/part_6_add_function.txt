@@ -1,0 +1,6 @@
+extern "C" fn add(a: u32, b: u32) u32;
+
+pub fn main() void {
+    const result = add(3, 4);
+    std.debug.print("Result: {}\n", .{result});
+}
