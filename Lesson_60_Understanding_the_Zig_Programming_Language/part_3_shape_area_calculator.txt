@@ -1,0 +1,14 @@
+const Shape = union(enum) {
+    Circle: struct { radius: f64 },
+    Rectangle: struct { width: f64, height: f64 },
+};
+fn area(shape: Shape) f64 {
+    switch (shape) {
+        Shape.Circle |circle| => {
+            return std.math.pi * circle.radius * circle.radius;
+        },
+        Shape.Rectangle |rect| => {
+            return rect.width * rect.height;
+        },
+    }
+}
