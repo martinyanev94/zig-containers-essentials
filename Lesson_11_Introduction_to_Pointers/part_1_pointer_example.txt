@@ -1,0 +1,10 @@
+const std = @import("std");
+
+pub fn main() void {
+    var x: i32 = 10;         // An integer variable
+    var p: *i32 = &x;       // Pointer p stores the address of x
+
+    std.debug.print("Value of x: {}\n", .{x});
+    std.debug.print("Address of x: {}\n", .{&x});
+    std.debug.print("Value at pointer p: {}\n", .{*p});
+}
