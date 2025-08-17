@@ -1,0 +1,8 @@
+const std = @import("std");
+const expect = std.testing.expect;
+
+test "coercion from undefined to any type" {
+    const x: ?i32 = null; // x is an undefined type.
+    const y: i32 = x; // Coerced to an integer type.
+    try expect(y == 0); // Expecting default conversion behavior.
+}
