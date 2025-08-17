@@ -1,0 +1,12 @@
+const std = @import("std");
+
+fn openFile(filename: []const u8) !*std.fs.File {
+    const file = try std.fs.File.openRead(filename);
+    return file;
+}
+
+pub fn main() !void {
+    const file = try openFile("example.txt");
+    defer file.close();
+    std.debug.print("File opened successfully: {}\n", .{file.filename});
+}
