@@ -1,0 +1,19 @@
+const Direction = enum {
+    Up,
+    Down,
+    Left,
+    Right,
+};
+fn move(direction: Direction) void {
+    switch (direction) {
+        Direction.Up => std.debug.print("Moving Up\n", .{}),
+        Direction.Down => std.debug.print("Moving Down\n", .{}),
+        Direction.Left => std.debug.print("Moving Left\n", .{}),
+        Direction.Right => std.debug.print("Moving Right\n", .{}),
+    }
+}
+
+pub fn main() void {
+    move(Direction.Up);
+    move(Direction.Left);
+}
