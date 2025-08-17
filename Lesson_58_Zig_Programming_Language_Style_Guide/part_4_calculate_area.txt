@@ -1,0 +1,4 @@
+const result = calculate_area(
+    5.0,
+    10.0,
+);
