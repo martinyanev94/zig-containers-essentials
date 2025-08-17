@@ -1,0 +1,8 @@
+const std = @import("std");
+
+pub fn main() void {
+    const a: u8 = 0b0001_1100;
+    const shifted = a << 2;
+
+    std.debug.print("0b0001_1100 << 2 = {:#b}\n", .{shifted});
+}
