@@ -1,0 +1,10 @@
+const std = @import("std");
+
+fn createArray(length: comptime u32) []i32 {
+    return [_]i32{0} ** length;
+}
+
+pub fn main() void {
+    const array = createArray(5);
+    std.debug.print("Array length: {}\n", .{array.len});
+}
