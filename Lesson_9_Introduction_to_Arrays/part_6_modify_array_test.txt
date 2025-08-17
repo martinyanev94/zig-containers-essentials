@@ -1,0 +1,7 @@
+var some_integers: [100]i32 = undefined;
+test "modify an array" {
+    for (&some_integers, 0..) |*item, i| {
+        item.* = @intCast(i);
+    }
+    try expect(some_integers[10] == 10);
+}
