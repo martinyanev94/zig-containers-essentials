@@ -1,0 +1,14 @@
+const std = @import("std");
+
+pub fn processRequest() !void {
+    const resources = try reserveResources();
+    defer {
+        const cleanupError = freeResources(resources);
+        if (cleanupError) {
+            return cleanupError; // Propagate error back upwards
+        }
+    }
+
+    // Simulate processing
+    return error.ProcessingFailed;
+}
