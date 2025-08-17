@@ -1,0 +1,7 @@
+fn doAThing(str: []u8) !void {
+    const number = try parseU64(str, 10); 
+    // This will propagate the error if it occurs
+    _ = number; 
+}
+const number = parseU64("1234", 10) catch unreachable; 
+// Crashing in debug mode if this unexpectedly fails
