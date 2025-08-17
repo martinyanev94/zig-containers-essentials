@@ -1,0 +1,10 @@
+@memset(dest, elem) void
+const std = @import("std");
+
+pub fn main() !void {
+    var data: [5]u8 = undefined;
+
+    @memset(&data, 0);
+
+    std.debug.print("Cleared data: {any}\n", .{data});
+}
