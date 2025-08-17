@@ -1,0 +1,19 @@
+const TrafficLight = enum {
+    Red,
+    Yellow,
+    Green,
+};
+const std = @import("std");
+
+pub fn main() !void {
+    const light = TrafficLight.Yellow;
+
+    const action = switch (light) {
+        .Red => "Stop",
+        .Yellow => "Prepare to stop",
+        .Green => "Go",
+        else => unreachable,
+    };
+
+    std.debug.print("Action: {}\n", .{action});
+}
