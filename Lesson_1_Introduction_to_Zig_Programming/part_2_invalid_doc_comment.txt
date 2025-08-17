@@ -1,0 +1,4 @@
+const std = @import("std");
+
+/// This is an invalid doc comment
+const value = 5;
