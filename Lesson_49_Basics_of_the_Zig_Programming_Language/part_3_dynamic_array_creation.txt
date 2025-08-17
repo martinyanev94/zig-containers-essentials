@@ -1,0 +1,22 @@
+const std = @import("std");
+
+fn createArray(comptime size: usize) []u32 {
+    var allocator = std.heap.c_allocator;
+    const array = allocator.create(u32, size) catch |err| {
+        std.debug.print("Error: {}\n", .{err});
+        return null;
+    };
+    return array;
+}
+
+pub fn main() !void {
+    const myArray = createArray(10);
+    defer std.heap.c_allocator.destroy(myArray);
+    
+    // Initialize and print the array
+    for (myArray) |*element, index| {
+        element.* = @intCast(u32, index + 1);
+    }
+
+    std.debug.print("Array: {}\n", .{myArray});
+}
