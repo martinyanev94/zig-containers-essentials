@@ -1,0 +1,11 @@
+const std = @import("std");
+const expect = std.testing.expect;
+
+test "peer type resolution in arithmetic" {
+    const a: i16 = 5;
+    const b: u32 = 15;
+
+    const result = a + b; // Here, a gets widened to u32.
+    try expect(result == 20);
+    try expect(@TypeOf(result) == u32);
+}
