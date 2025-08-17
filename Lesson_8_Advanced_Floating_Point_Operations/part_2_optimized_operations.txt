@@ -1,0 +1,15 @@
+const std = @import("std");
+
+pub fn optimized_operations() void {
+    const x: f64 = 1e10;
+    const y: f64 = 1e-10;
+
+    inline for (0..1) |i| {
+        const result = if (i == 0) x + y else x + -y;
+        std.debug.print("Optimized mode result (block {}): {}\n", .{i, result});
+    }
+}
+
+pub fn main() void {
+    optimized_operations();
+}
