@@ -1,0 +1,9 @@
+const User = struct {
+    id: u32,
+    name: []const u8,
+};
+
+const users: []User = &.{ 
+    User{ .id = 1, .name = "Alice" },
+    User{ .id = 2, .name = "Bob" },
+};
