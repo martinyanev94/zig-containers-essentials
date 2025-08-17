@@ -1,0 +1,15 @@
+const std = @import("std");
+
+threadlocal var threadVar: i32 = 1;
+
+fn threadFunction() void {
+    threadVar += 1; // Each thread will have its own instance of threadVar
+    std.debug.print("Thread Variable Value: {}\n", .{threadVar});
+}
+
+pub fn main() void {
+    const thread1 = try std.Thread.spawn(.{}, threadFunction, .{});
+    const thread2 = try std.Thread.spawn(.{}, threadFunction, .{});
+    thread1.join();
+    thread2.join();
+}
