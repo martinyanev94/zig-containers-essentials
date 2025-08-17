@@ -1,0 +1,13 @@
+const std = @import("std");
+
+pub fn main() !void {
+    var allocator = std.heap.page_allocator;
+    const resource = allocator.create(u8, 1024) catch {
+        std.debug.print("Memory allocation failed.\n", .{});
+        return null;
+    };
+    defer allocator.destroy(resource);
+    
+    resource[0] = 42; // Use resource...
+    std.debug.print("Resource first byte: {}\n", .{resource[0]});
+}
