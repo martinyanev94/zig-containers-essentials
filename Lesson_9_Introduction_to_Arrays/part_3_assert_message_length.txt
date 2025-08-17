@@ -1,0 +1,3 @@
+comptime {
+    assert(message.len == 5);
+}
