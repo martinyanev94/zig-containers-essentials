@@ -1,0 +1,9 @@
+const std = @import("std");
+
+pub fn main() void {
+    const a: bool = true;
+    const b: bool = false;
+    const result = a or b;
+
+    std.debug.print("true or false = {}\n", .{result});
+}
