@@ -1,0 +1,19 @@
+const std = @import("std");
+
+pub fn main() void {
+    var arr: [5]i32 = [5]i32{1, 2, 3, 4, 5}; // Static array
+    var p: *[5]i32 = &arr;                  // Pointer to the array
+
+    std.debug.print("Original array: ");
+    for (arr) |item| {
+        std.debug.print("{} ", .{item});
+    }
+    
+    // Modify the first element via the pointer
+    (*p)[0] = 10;
+
+    std.debug.print("\nModified array: ");
+    for (arr) |item| {
+        std.debug.print("{} ", .{item});
+    }
+}
