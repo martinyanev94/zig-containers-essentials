@@ -1,0 +1,18 @@
+const std = @import("std");
+
+fn get_value() ?i32 {
+    // Simulate some condition where we might not have a value
+    if (std.rand.default_prng().next() % 2 == 0) {
+        return null; // No value present
+    } else {
+        return 42; // A valid value
+    }
+}
+
+pub fn main() void {
+    const value = get_value();
+    switch (value) {
+        null => std.debug.print("No value present.\n", .{}), 
+        |val| => std.debug.print("Value is: {}\n", .{val}),
+    }
+}
