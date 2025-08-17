@@ -1,0 +1,8 @@
+const std = @import("std");
+
+pub fn main() void {
+    const addr: usize = 0x1000; // Let's assume this is our integer address
+    const ptr: *i32 = @ptrFromInt(addr); // Convert the integer to a pointer
+
+    std.debug.print("Pointer: {}\n", .{ptr});
+}
