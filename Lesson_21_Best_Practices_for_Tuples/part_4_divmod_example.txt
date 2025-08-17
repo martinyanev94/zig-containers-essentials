@@ -1,0 +1,15 @@
+const std = @import("std");
+
+fn divmod(numerator: u32, denominator: u32) !struct { u32, u32 } {
+    return .{ numerator / denominator, numerator % denominator };
+}
+
+pub fn main() void {
+    const (div, mod) = divmod(10, 3) catch |err| {
+        std.debug.print("Error: {}\n", .{ err });
+        return;
+    };
+    
+    std.debug.print("10 / 3 = {}\n", .{ div });
+    std.debug.print("10 % 3 = {}\n", .{ mod });
+}
