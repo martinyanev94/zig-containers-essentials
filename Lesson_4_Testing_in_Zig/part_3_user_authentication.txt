@@ -1,0 +1,18 @@
+const std = @import("std");
+
+const User = struct {
+    username: []const u8,
+    password: []const u8,
+
+    pub fn authenticate(self: *User, password: []const u8) bool {
+        return std.mem.eql(u8, self.password, password);
+    }
+};
+
+// Test cases for user authentication
+test "user authentication" {
+    const user = User{ .username = "Alice", .password = "securepassword" };
+
+    std.testing.expect(user.authenticate("securepassword"));
+    std.testing.expect(!user.authenticate("wrongpassword"));
+}
