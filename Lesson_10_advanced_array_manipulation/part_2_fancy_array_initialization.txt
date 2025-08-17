@@ -1,0 +1,14 @@
+var fancy_array = init: {
+    var initial_value: [10]Point = undefined;
+    for (&initial_value, 0..) |*pt, i| {
+        pt.* = Point{
+            .x = @intCast(i),
+            .y = @intCast(i * 2),
+        };
+    }
+    break :init initial_value;
+};
+test "compile-time array initialization" {
+    try expect(fancy_array[4].x == 4);
+    try expect(fancy_array[4].y == 8);
+}
