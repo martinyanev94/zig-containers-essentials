@@ -1,0 +1,10 @@
+const std = @import("std");
+
+pub fn main() void {
+    var value: i32 = 42;
+    var ptr: *i32 = &value; // Pointer to an integer
+
+    // Convert pointer to integer
+    const addr: usize = @intFromPtr(ptr);
+    std.debug.print("Pointer as integer address: {}\n", .{addr});
+}
