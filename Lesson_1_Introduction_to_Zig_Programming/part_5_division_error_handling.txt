@@ -1,0 +1,7 @@
+pub fn main() void {
+    const result = divide(10.0, 0.0);
+    switch (result) {
+        Error => std.debug.print("Division failed: An error occurred\n", .{}),
+        else => std.debug.print("Result: {}\n", .{result}),
+    }
+}
