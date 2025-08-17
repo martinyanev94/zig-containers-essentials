@@ -1,0 +1,22 @@
+section .data
+    threshold db 25
+
+section .text
+    global _start
+
+_start:
+    mov al, [num1]    
+    add al, [num2]   
+    cmp al, [threshold] ; Compare the result with the threshold
+    jg above_threshold   ; Jump to above_threshold if greater
+
+    ; Code if not above threshold
+    mov eax, 1          ; syscall number for exit
+    xor ebx, ebx        ; Exit code 0
+    int 0x80
+
+above_threshold:
+    ; Code if above threshold
+    mov eax, 1          ; syscall number for exit
+    mov ebx, 1          ; Exit code 1
+    int 0x80
