@@ -1,0 +1,12 @@
+test "modify tagged union in switch" {
+    var c = ComplexType{ .ok = 42 };
+
+    switch (c) {
+        ComplexTypeTag.ok => |*value| {
+            value.* += 1; // Directly modifying the value via a pointer
+        },
+        ComplexTypeTag.not_ok => unreachable,
+    }
+
+    try expect(c.ok == 43); // value should now be 43
+}
