@@ -1,0 +1,9 @@
+const std = @import("std");
+
+pub fn main() void {
+    const a: u32 = 15;
+    const b: u32 = 4;
+    const remainder = a % b;
+
+    std.debug.print("15 % 4 = {}\n", .{remainder});
+}
