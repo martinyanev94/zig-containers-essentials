@@ -1,0 +1,18 @@
+const std = @import("std");
+
+const PrimaryColor = enum {
+    Red = 1,
+    Green = 2,
+    Blue = 3,
+};
+
+const SecondaryColor = union(enum) {
+    Yellow = PrimaryColor.Green + PrimaryColor.Red,
+    Cyan = PrimaryColor.Green + PrimaryColor.Blue,
+    Magenta = PrimaryColor.Red + PrimaryColor.Blue,
+};
+
+pub fn main() void {
+    const secondColor: SecondaryColor = SecondaryColor.Yellow;
+    std.debug.print("Secondary Color: {}\n", .{secondColor});
+}
