@@ -1,0 +1,13 @@
+const User = union(enum) {
+    Active: bool,
+    Inactive: f64,
+    Deleted: void,
+
+    pub fn statusMessage(self: User) []const u8 {
+        return switch (self) {
+            User.Active => "User is active.",
+            User.Inactive => "User is inactive.",
+            User.Deleted => "User account has been deleted.",
+        };
+    },
+};
