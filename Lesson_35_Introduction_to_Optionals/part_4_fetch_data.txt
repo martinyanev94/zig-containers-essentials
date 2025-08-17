@@ -1,0 +1,18 @@
+const std = @import("std");
+
+fn fetchData(success: bool) ?i32 {
+    if (success) {
+        return 42; // Mock successful fetch
+    } else {
+        return null; // Simulate no data found
+    }
+}
+
+pub fn main() void {
+    const data = fetchData(true);
+    if (data) |value| {
+        std.debug.print("Fetched data: {}\n", .{value});
+    } else {
+        std.debug.print("No data found.\n", .{});
+    }
+}
