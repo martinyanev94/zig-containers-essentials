@@ -1,0 +1,12 @@
+const std = @import("std");
+
+pub fn serveRequest() !void {
+    const tempFile = try std.fs.createTempFile("request_data.txt");
+    defer std.fs.delete(tempFile); // Ensure the temporary file is deleted
+
+    const result = try processData(tempFile);
+    defer std.debug.print("Processed data: {}\n", .{result}); // Log after processing
+    
+    // Simulate handling the response
+    return error.RequestFailed;
+}
