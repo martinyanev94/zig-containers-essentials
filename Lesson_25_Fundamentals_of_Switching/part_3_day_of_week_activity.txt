@@ -1,0 +1,26 @@
+const DayOfWeek = enum {
+    Sunday,
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+    Holiday,
+};
+
+pub fn main() !void {
+    const today = DayOfWeek.Holiday;
+
+    const activity = switch (today) {
+        .Sunday => "Relaxing",
+        .Monday => "Work",
+        .Tuesday => "Work",
+        .Wednesday => "Work",
+        .Thursday => "Work",
+        .Friday => "Party",
+        .Saturday => "Hiking",
+        // .Holiday case missing, will cause a compile error
+    };
+    // Code continues here...
+}
