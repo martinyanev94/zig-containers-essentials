@@ -1,0 +1,14 @@
+const A = error{
+    NotDir,
+    PathNotFound,
+};
+
+const B = error{
+    OutOfMemory,
+};
+
+const C = A || B;
+
+fn foo() C!void {
+    return error.NotDir; 
+}
