@@ -1,0 +1,18 @@
+const UserRole = enum {
+    Admin,
+    User,
+    Guest,
+};
+
+pub fn main() !void {
+    const role = UserRole.Guest;
+
+    const permissions = switch (role) {
+        .Admin => "Full access",
+        .User => "Limited access",
+        .Guest => "Read-only access",
+        else => unreachable,
+    };
+
+    std.debug.print("Permissions: {}\n", .{permissions});
+}
