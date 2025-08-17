@@ -1,0 +1,16 @@
+const std = @import("std");
+
+fn printAges(ages: []?u32) void {
+    for (ages) |age| {
+        if (age) |value| {
+            std.debug.print("Age is: {}\n", .{value});
+        } else {
+            std.debug.print("Age is unknown.\n", .{});
+        }
+    }
+}
+
+pub fn main() void {
+    const ages: []?u32 = &.{ 25, null, 30, null, 45 };
+    printAges(ages);
+}
