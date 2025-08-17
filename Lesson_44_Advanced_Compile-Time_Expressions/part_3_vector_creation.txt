@@ -1,0 +1,13 @@
+const std = @import("std");
+
+fn createVector(comptime T: type, comptime N: usize) []T {
+    return [_]T{0} ** N;
+}
+
+pub fn main() void {
+    const intVector = createVector(u32, 5);
+    const floatVector = createVector(f32, 5);
+    
+    std.debug.print("Integer Vector: {}\n", .{intVector});
+    std.debug.print("Float Vector: {}\n", .{floatVector});
+}
