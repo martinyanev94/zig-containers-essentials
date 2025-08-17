@@ -1,0 +1,5 @@
+const Pi = 3.14159;
+
+fn calculateCircumference(radius: f64) f64 {
+    return 2.0 * Pi * radius;
+}
