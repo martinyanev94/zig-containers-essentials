@@ -1,0 +1,8 @@
+const std = @import("std");
+
+pub fn main() void {
+    const value: f64 = 2.7;
+    const rounded_value = std.math.round(value);
+
+    std.debug.print("Rounded value: {}\n", .{rounded_value});
+}
