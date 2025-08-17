@@ -1,0 +1,20 @@
+const std = @import("std");
+
+const GameConfig = struct {
+    var soundEnabled: bool = true;
+    var difficulty: u32 = 1; // Default to easy
+
+    pub fn printConfig(self: *GameConfig) void {
+        std.debug.print("Sound Enabled: {}\n", .{self.soundEnabled});
+        std.debug.print("Difficulty Level: {}\n", .{self.difficulty});
+    }
+};
+
+pub fn main() void {
+    var config = GameConfig{};
+    config.printConfig();
+
+    // Let's change the difficulty to hard (2)
+    config.difficulty = 2; 
+    config.printConfig();
+}
