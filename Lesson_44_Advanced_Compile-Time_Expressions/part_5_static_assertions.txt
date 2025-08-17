@@ -1,0 +1,12 @@
+const std = @import("std");
+
+fn staticAssert(condition: bool) void {
+    if (!condition) @compileError("Static assert failed");
+}
+
+pub fn main() void {
+    staticAssert(@sizeOf(u32) == 4); // Ensure u32 is 4 bytes
+    staticAssert(@typeInfo(u32).isInteger);
+    
+    std.debug.print("All assertions passed!\n", .{});
+}
