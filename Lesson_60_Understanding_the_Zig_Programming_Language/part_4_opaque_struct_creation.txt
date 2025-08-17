@@ -1,0 +1,6 @@
+const OpaqueType = opaque struct {
+    // internal implementation hidden
+};
+fn create_opaque() OpaqueType {
+    return OpaqueType{};
+}
