@@ -1,0 +1,10 @@
+test "Get user status message" {
+    var userStatus = User.Active(true);
+    std.debug.print("{}\n", .{userStatus.statusMessage()});
+    
+    userStatus.update(User.Inactive(3.0));
+    std.debug.print("{}\n", .{userStatus.statusMessage()});
+    
+    userStatus.update(User.Deleted(void));
+    std.debug.print("{}\n", .{userStatus.statusMessage()});
+}
