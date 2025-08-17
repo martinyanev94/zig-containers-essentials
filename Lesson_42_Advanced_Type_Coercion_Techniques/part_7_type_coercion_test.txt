@@ -1,0 +1,14 @@
+const std = @import("std");
+const expect = std.testing.expect;
+
+test "type coercion assertions" {
+    const expectedInt = 10;
+    const inputFloat: f32 = 10.0; // Implicit coercion expected
+    const inputInt: i32 = 10;
+
+    const resultFromFloat = @intCast(i32, inputFloat);
+    const resultFromInt = inputInt;
+
+    try expect(resultFromFloat == expectedInt);
+    try expect(resultFromInt == expectedInt);
+}
