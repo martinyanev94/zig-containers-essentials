@@ -1,0 +1,17 @@
+const std = @import("std");
+
+pub fn computeValues() !struct {
+    min: i32,
+    max: i32,
+} {
+    // Imagine some computation logic here.
+    return .{ .min = 1, .max = 100 };
+}
+
+test "destructuring return values" {
+    const res = try computeValues();
+    const { min, max } = res;
+
+    try expect(min == 1);
+    try expect(max == 100);
+}
