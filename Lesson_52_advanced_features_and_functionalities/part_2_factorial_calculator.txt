@@ -1,0 +1,10 @@
+const std = @import("std");
+
+fn factorial(comptime n: u32) u32 {
+    return if (n == 0) 1 else n * factorial(n - 1);
+}
+
+pub fn main() void {
+    const result = factorial(5); // This will calculate 120 at compile time
+    std.debug.print("Factorial of 5 is: {}\n", .{result});
+}
