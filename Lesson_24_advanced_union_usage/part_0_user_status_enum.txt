@@ -1,0 +1,11 @@
+const StatusTag = enum {
+    Active,
+    Inactive,
+    Deleted,
+};
+
+const UserStatus = union(StatusTag) {
+    Active: bool,
+    Inactive: f64,
+    Deleted: void,
+};
