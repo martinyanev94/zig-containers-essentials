@@ -1,0 +1,16 @@
+const Point = struct {
+    x: i32,
+    y: i32,
+};
+fn makePoint(x: i32) Point {
+    return Point{
+        .x = x,
+        .y = x * 2,
+    };
+}
+var more_points = [_]Point{makePoint(3)} ** 10;
+test "array initialization with function calls" {
+    try expect(more_points[4].x == 3);
+    try expect(more_points[4].y == 6);
+    try expect(more_points.len == 10);
+}
