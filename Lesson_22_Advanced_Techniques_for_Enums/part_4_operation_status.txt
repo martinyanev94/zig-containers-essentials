@@ -1,0 +1,18 @@
+const std = @import("std");
+
+const Operation = enum {
+    Success,
+    Failure,
+};
+
+fn performOperation(success: bool) Operation {
+    return if (success) Operation.Success else Operation.Failure;
+}
+
+pub fn main() void {
+    const operationResult = performOperation(true);
+    switch (operationResult) {
+        Operation.Success => std.debug.print("Operation completed successfully!\n", .{}),
+        Operation.Failure => std.debug.print("Operation failed!\n", .{}),
+    }
+}
