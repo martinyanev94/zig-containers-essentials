@@ -1,0 +1,9 @@
+test "@tagName" {
+    const Small2 = union(enum) {
+        a: i32,
+        b: bool,
+        c: u8,
+    };
+
+    try expect(std.mem.eql(u8, @tagName(Small2.a), "a")); // Checking the dynamic name
+}
