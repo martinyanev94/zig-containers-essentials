@@ -1,0 +1,11 @@
+const std = @import("std");
+
+pub fn main() void {
+    var number: f64 = 0.0;
+    const increment: f64 = 1e-10;
+
+    for (0..100) |i| {
+        number += increment;
+        std.debug.print("Incrementing result ({}): {}\n", .{i, number});
+    }
+}
