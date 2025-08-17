@@ -1,0 +1,19 @@
+const std = @import("std");
+
+const Point = struct {
+    x: i32,
+    y: i32,
+};
+
+pub fn main() void {
+    var p: Point = Point{ .x = 10, .y = 20 };
+    var ptr: *Point = &p;
+
+    // Accessing fields using pointer arithmetic
+    std.debug.print("Point coordinates: x = {}, y = {}\n", .{ptr.x, ptr.y});
+    
+    (*ptr).x += 5; // Modifying the x field directly
+    (*ptr).y += 5; // Modifying the y field directly
+
+    std.debug.print("Updated Point coordinates: x = {}, y = {}\n", .{ptr.x, ptr.y});
+}
