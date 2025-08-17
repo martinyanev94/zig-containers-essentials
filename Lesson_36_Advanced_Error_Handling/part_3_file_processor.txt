@@ -1,0 +1,24 @@
+const std = @import("std");
+
+pub const AppError = error{
+    FileError,
+    ProcessingError,
+};
+
+fn readData(filename: []const u8) ![]const u8 {
+    const file = try openFile(filename);
+    return try file.readToEndAlloc(std.heap.page_allocator);
+}
+
+fn processData(data: []const u8) !void {
+    if (data.len == 0) {
+        return AppError.ProcessingError;
+    }
+    // Process data...
+}
+
+pub fn main() !void {
+    const data = try readData("example.txt");
+    defer std.heap.page_allocator.free(data);
+    try processData(data);
+}
