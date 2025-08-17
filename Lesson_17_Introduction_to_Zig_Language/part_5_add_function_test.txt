@@ -1,0 +1,10 @@
+const std = @import("std");
+
+fn add(x: u32, y: u32) u32 {
+    return x + y;
+}
+
+test "test add function" {
+    const result = add(2, 3);
+    std.testing.expect(result == 5);
+}
