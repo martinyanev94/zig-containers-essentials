@@ -1,0 +1,8 @@
+const std = @import("std");
+
+pub fn main() void {
+    const a: bool = true;
+    const negated = !a;
+
+    std.debug.print("not true = {}\n", .{negated});
+}
