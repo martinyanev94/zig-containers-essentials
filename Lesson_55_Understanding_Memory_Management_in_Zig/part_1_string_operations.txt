@@ -1,0 +1,14 @@
+const std = @import("std");
+
+fn stringOperation(allocator: *std.mem.Allocator) !void {
+    var buffer: [64]u8 = undefined; // Stack allocation
+    const message = "Hello, Zig!";
+    const len = std.mem.len(message);
+
+    std.mem.copy(u8, &buffer, message);
+    std.debug.print("Buffer contents: {}\n", .{buffer[0..len]});
+}
+
+pub fn main() !void {
+    try stringOperation(nullptr); 
+}
