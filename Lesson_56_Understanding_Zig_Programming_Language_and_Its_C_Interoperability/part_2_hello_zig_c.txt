@@ -1,0 +1,9 @@
+const std = @import("std");
+
+const c = @cImport({
+    @cInclude("stdio.h");
+});
+
+pub fn main() void {
+    c.printf("Hello from Zig and C!\n");
+}
