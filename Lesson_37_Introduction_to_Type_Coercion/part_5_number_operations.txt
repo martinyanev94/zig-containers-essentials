@@ -1,0 +1,15 @@
+const std = @import("std");
+
+const Number = union(i32, f64);
+
+pub fn main() void {
+    const a: Number = Number{i32: 10};
+    const b: Number = Number{f64: 7.5};
+
+    const total = addNumbers(a, b);
+    std.debug.print("The total is: {}\n", .{total});
+}
+
+fn addNumbers(a: Number, b: Number) f64 {
+    return @intCast(f64, a) + @intCast(f64, b); // Explicit casting for safe addition
+}
