@@ -1,0 +1,17 @@
+const std = @import("std");
+
+fn test_condition(x: u32) void {
+    if (x == 0) {
+        std.debug.print("Zero\n", .{});
+    } else if (x < 10) {
+        std.debug.print("Less than ten\n", .{});
+    } else {
+        std.debug.print("Ten or more\n", .{});
+    }
+}
+
+pub fn main() void {
+    test_condition(5);
+    test_condition(0);
+    test_condition(15);
+}
