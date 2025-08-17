@@ -1,0 +1,19 @@
+const std = @import("std");
+
+pub fn main() !void {
+    // Normal integer
+    const normal_int: i32 = 1234;
+
+    // Optional integer
+    var optional_int: ?i32 = null;
+
+    // Now we can assign a value
+    optional_int = 5678;
+
+    // Check if it has a value
+    if (optional_int) |value| {
+        std.debug.print("The value is: {}\n", .{value});
+    } else {
+        std.debug.print("The optional integer is null.\n", .{});
+    }
+}
