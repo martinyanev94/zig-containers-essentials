@@ -1,0 +1,11 @@
+const std = @import("std");
+
+pub fn main() void {
+    const tuple = .{ @as(u32, 1234), @as(f64, 12.34), true, "hi" };
+    const number = tuple[0]; 
+    const decimal = tuple[1];
+    const boolean = tuple[2];
+    const text = tuple[3];
+
+    std.debug.print("Number: {}, Decimal: {}, Boolean: {}, Text: {}\n", .{ number, decimal, boolean, text });
+}
