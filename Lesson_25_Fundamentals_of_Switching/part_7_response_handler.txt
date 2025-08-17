@@ -1,0 +1,28 @@
+const std = @import("std");
+
+const Status = enum {
+    Success,
+    Error,
+    Unexpected,
+};
+
+fn handleResponse(response: Status) !void {
+    switch (response) {
+        .Success => {
+            std.debug.print("Request succeeded!\n", .{});
+        },
+        .Error => {
+            std.debug.print("An error occurred during the request.\n", .{});
+        },
+        .Unexpected => {
+            std.debug.print("Unexpected response received!\n", .{});
+        },
+        else => unreachable,
+    }
+}
+
+test "testing response handling" {
+    try handleResponse(Status.Success);
+    try handleResponse(Status.Error);
+    try handleResponse(Status.Unexpected);
+}
