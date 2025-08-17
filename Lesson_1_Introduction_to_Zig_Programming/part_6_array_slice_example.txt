@@ -1,0 +1,9 @@
+const std = @import("std");
+
+pub fn main() void {
+    const array = [3]u32{1, 2, 3}; // fixed-size array
+    const slice = array[0..]; // creating a slice of the entire array
+
+    std.debug.print("Array: {}\n", .{array});
+    std.debug.print("Slice: {}\n", .{slice});
+}
