@@ -1,0 +1,14 @@
+const std = @import("std");
+
+pub fn main() !void {
+    const age = 20;
+
+    const eligibility = switch (age) {
+        0...12 => "child",
+        13...19 => "teenager",
+        20...64 => "adult",
+        _ => "senior",
+    };
+
+    std.debug.print("Age category: {}\n", .{eligibility});
+}
