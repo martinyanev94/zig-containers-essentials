@@ -1,0 +1,18 @@
+const std = @import("std");
+
+fn possible_failure() void {
+    var number: u32 = 0;
+
+    if (number == 0) {
+        asm volatile (
+            "int3" // Trigger a breakpoint if number is zero
+        );
+    } else {
+        // Regular processing could continue here
+    }
+}
+
+pub fn main() void {
+    possible_failure();
+    std.debug.print("Ran successfully.\n", .{});
+}
