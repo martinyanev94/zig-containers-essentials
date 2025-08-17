@@ -1,0 +1,7 @@
+//! This module provides functions to manipulate dates and times.
+
+const std = @import("std");
+
+pub fn getCurrentDate() void {
+    // Implementation goes here
+}
