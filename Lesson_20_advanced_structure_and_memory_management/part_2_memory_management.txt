@@ -1,0 +1,10 @@
+const std = @import("std");
+
+pub fn main() void {
+    const allocator = std.heap.page_allocator;
+    const myStruct = allocator.create(MyStruct) catch unreachable;
+    defer allocator.destroy(myStruct);
+    
+    // Initialize and use the struct here
+    myStruct.* = MyStruct{ .field1 = 10, .field2 = "Example" };
+}
