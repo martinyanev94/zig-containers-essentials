@@ -1,0 +1,9 @@
+const std = @import("std");
+
+pub fn main() void {
+    const a: u32 = 5;
+    const b: u32 = 7;
+    const sum = a + b;
+
+    std.debug.print("5 + 7 = {}\n", .{sum});
+}
