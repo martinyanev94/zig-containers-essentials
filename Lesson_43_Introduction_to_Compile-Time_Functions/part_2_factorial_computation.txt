@@ -1,0 +1,14 @@
+const std = @import("std");
+
+fn factorial(n: u32) comptime !u32 {
+    if (n == 0) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+
+pub fn main() void {
+    const fact5 = factorial(5);
+    std.debug.print("Factorial of 5 is: {}\n", .{fact5});
+}
