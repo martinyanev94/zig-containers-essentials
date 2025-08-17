@@ -1,0 +1,5 @@
+// my_struct.zig
+const MyStruct = struct {
+    id: u32,
+    name: []const u8,
+};
