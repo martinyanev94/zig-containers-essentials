@@ -1,0 +1,13 @@
+const std = @import("std");
+
+pub fn configure_cpu() void {
+    asm ( 
+        "mov eax, 0x1234\n" // Load some specific value into the EAX register
+        "out dx, al" // Write the lower byte of EAX to a specific I/O port
+    );
+}
+
+pub fn main() void {
+    configure_cpu();
+    std.debug.print("CPU configured successfully.\n", .{});
+}
