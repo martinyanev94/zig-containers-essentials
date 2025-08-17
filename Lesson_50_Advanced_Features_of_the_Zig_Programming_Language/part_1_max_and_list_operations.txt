@@ -1,0 +1,39 @@
+fn max(comptime T: type, a: T, b: T) T {
+    return if (a > b) a else b;
+}
+
+pub fn main() void {
+    const int_max = max(i32, 10, 20);
+    const float_max = max(f32, 5.5, 2.3);
+
+    std.debug.print("Max integer: {}\nMax float: {}\n", .{int_max, float_max});
+}
+const std = @import("std");
+
+const Link = union(i32, f32, void);
+
+const List = struct {
+    value: Link,
+    next: ?*List,
+
+    pub fn append(self: *List, new_value: Link) void {
+        if (self.next) |next| {
+            next.append(new_value);
+        } else {
+            self.next = allocator.create(List) catch unreachable;
+            self.next.* = List{ .value = new_value, .next = null };
+        }
+    }
+};
+
+pub fn main() void {
+    var head: List = List{ .value = Link(i32, 0), .next = null };
+    head.append(Link(i32, 10));
+    head.append(Link(i32, 20));
+    
+    std.debug.print("Head value: {}\n", .{head.value});
+
+    if (head.next) |nxt| {
+        std.debug.print("Next value: {}\n", .{nxt.value});
+    }
+}
