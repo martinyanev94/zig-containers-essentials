@@ -1,0 +1,17 @@
+const std = @import("std");
+
+fn max(comptime T: type, a: T, b: T) T {
+    if (a > b) {
+        return a;
+    } else {
+        return b;
+    }
+}
+
+pub fn main() void {
+    const maxInt = max(u32, 10, 20);
+    const maxFloat = max(f32, 10.5, 20.3);
+    
+    std.debug.print("Max Int: {}\n", .{maxInt});
+    std.debug.print("Max Float: {}\n", .{maxFloat});
+}
