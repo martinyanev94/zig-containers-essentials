@@ -1,0 +1,10 @@
+const std = @import("std");
+
+pub fn main() void {
+    const age: ?u32 = null; // Age is unknown
+    if (age) |value| {
+        std.debug.print("Age is: {}\n", .{value});
+    } else {
+        std.debug.print("Age is not available.\n", .{});
+    }
+}
