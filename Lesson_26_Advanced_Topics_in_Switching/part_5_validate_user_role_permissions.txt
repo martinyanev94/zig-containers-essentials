@@ -1,0 +1,20 @@
+test "validate user role permissions" {
+    const testCases = [_]struct {
+        role: UserRole,
+        expected: []const u8,
+    }{
+        .{.Admin, "Full access"},
+        .{.User, "Limited access"},
+        .{.Guest, "Read-only access"},
+    };
+
+    for (testCase in testCases) {
+        const result = switch (testCase.role) {
+            .Admin => "Full access",
+            .User => "Limited access",
+            .Guest => "Read-only access",
+            else => unreachable,
+        };
+        std.debug.assert(result == testCase.expected);
+    }
+}
