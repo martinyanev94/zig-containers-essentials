@@ -1,0 +1,6 @@
+const std = @import("std");
+
+pub fn main() void {
+    var a: c_int = 42; // Using the c_int type
+    std.debug.print("The value of a is: {}\n", .{a});
+}
