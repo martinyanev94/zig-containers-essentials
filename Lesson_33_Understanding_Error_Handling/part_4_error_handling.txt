@@ -1,0 +1,16 @@
+const FileOpenError = error{
+    AccessDenied,
+    OutOfMemory,
+    FileNotFound,
+};
+
+const AllocationError = error{
+    OutOfMemory,
+};
+
+fn foo(err: AllocationError) FileOpenError {
+    return err; 
+}
+fn foo(err: FileOpenError) AllocationError {
+    return err; // This would cause a compile-time error
+}
