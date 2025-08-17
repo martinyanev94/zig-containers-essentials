@@ -1,0 +1,22 @@
+const std = @import("std");
+
+const Color = enum {
+    Red,
+    Green,
+    Blue,
+
+    // Methods for Color
+    Complementary(complement: Color) void {
+        switch (this) {
+            Color.Red => return Color.Cyan,
+            Color.Green => return Color.Magenta,
+            Color.Blue => return Color.Yellow,
+        }
+    }
+};
+
+pub fn main() void {
+    const color: Color = Color.Red;
+    const complementary = color.Complementary();
+    std.debug.print("Complementary Color of Red: {}\n", .{complementary});
+}
