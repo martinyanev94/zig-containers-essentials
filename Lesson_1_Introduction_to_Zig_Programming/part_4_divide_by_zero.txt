@@ -1,0 +1,10 @@
+const std = @import("std");
+
+const Error = error{"An error occurred"};
+
+pub fn divide(numerator: f32, denominator: f32) anyerror!f32 {
+    if (denominator == 0.0) {
+        return Error; // return an error
+    }
+    return numerator / denominator; // return the result
+}
