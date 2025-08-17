@@ -1,0 +1,11 @@
+pub fn main() !void {
+    try foo(12); // Might result in an error from foo
+}
+
+fn foo(x: i32) !void {
+    if (x >= 5) {
+        try bar(); // If bar fails, we can see where it was called from
+    } else {
+        try bang();
+    }
+}
