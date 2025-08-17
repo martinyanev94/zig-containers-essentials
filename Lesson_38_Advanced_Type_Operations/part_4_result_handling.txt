@@ -1,0 +1,31 @@
+const std = @import("std");
+
+const Result = union(enum) {
+    Success: u32,
+    Error: []const u8,
+};
+
+pub fn getValue(condition: bool) ?Result {
+    if (condition) {
+        return Result.Success(42);
+    } else {
+        return Result.Error("An error occurred");
+    }
+}
+
+pub fn main() void {
+    const result = getValue(true);
+    
+    if (result) |value| {
+        switch (value) {
+            Result.Success |v| {
+                std.debug.print("Success with value: {}\n", .{v});
+            },
+            Result.Error |e| {
+                std.debug.print("Error: {}\n", .{e});
+            },
+        }
+    } else {
+        std.debug.print("No result returned.\n", .{});
+    }
+}
