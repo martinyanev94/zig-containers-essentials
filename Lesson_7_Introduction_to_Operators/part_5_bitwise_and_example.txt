@@ -1,0 +1,9 @@
+const std = @import("std");
+
+pub fn main() void {
+    const a: u8 = 0b1100_1100;
+    const b: u8 = 0b1010_1010;
+    const result = a & b;
+
+    std.debug.print("0b1100_1100 & 0b1010_1010 = {:#b}\n", .{result});
+}
