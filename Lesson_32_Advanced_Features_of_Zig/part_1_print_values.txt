@@ -1,0 +1,11 @@
+const std = @import("std");
+
+fn printValue(comptime T: type, value: T) void {
+    std.debug.print("{}, ", .{value});
+}
+
+pub fn main() void {
+    printValue(u32, 42);
+    printValue(f64, 3.14);
+    printValue([]const u8, "Hello, Zig!");
+}
