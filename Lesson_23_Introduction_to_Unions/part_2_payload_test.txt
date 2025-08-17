@@ -1,0 +1,5 @@
+var payload = Payload{ .int = 1234 };
+try expect(payload.int == 1234);  // Access the active field, which is int
+
+payload = Payload{ .float = 12.34 }; // Assign a new value using the float field
+try expect(payload.float == 12.34);  // Now access the new active field
