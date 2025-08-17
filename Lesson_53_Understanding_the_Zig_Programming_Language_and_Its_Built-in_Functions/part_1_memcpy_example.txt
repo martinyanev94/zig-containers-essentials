@@ -1,0 +1,11 @@
+@memcpy(noalias dest, noalias source) void
+const std = @import("std");
+
+pub fn main() !void {
+    var source_data: [5]u8 = [1, 2, 3, 4, 5];
+    var dest_data: [5]u8 = undefined;
+
+    @memcpy(&dest_data, &source_data);
+    
+    std.debug.print("Copied data: {any}\n", .{dest_data});
+}
