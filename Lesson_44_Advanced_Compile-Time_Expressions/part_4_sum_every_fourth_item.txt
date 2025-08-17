@@ -1,0 +1,22 @@
+const std = @import("std");
+
+fn sum(arr: []const u32) u32 {
+    var total: u32 = 0;
+    const length = @intCast(u32, arr.len);
+
+    for (arr) |value, i| {
+        if (i % 4 == 0) {
+            total += value; // add every 4th item
+            if (i + 1 < length) total += arr[i + 1];
+            if (i + 2 < length) total += arr[i + 2];
+            if (i + 3 < length) total += arr[i + 3];
+        }
+    }
+    return total;
+}
+
+pub fn main() void {
+    const data = [_]u32{1, 2, 3, 4, 5, 6, 7, 8};
+    const result = sum(data);
+    std.debug.print("Sum: {}\n", .{result});
+}
