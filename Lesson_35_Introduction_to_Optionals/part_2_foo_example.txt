@@ -1,0 +1,25 @@
+const std = @import("std");
+
+const Foo = struct {
+    a: i32,
+};
+
+fn doSomethingWithFoo(foo: *Foo) void {
+    std.debug.print("Foo's value is: {}\n", .{foo.a});
+}
+
+fn doAThing(optional_foo: ?*Foo) void {
+    // Check if optional_foo has a value
+    if (optional_foo) |foo| {
+        doSomethingWithFoo(foo);
+    } else {
+        std.debug.print("No Foo provided!\n", .{});
+    }
+}
+
+pub fn main() void {
+    var foo_instance: Foo = Foo{ .a = 42 };
+    doAThing(&foo_instance);
+
+    doAThing(null);
+}
