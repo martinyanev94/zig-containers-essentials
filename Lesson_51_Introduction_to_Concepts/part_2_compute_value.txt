@@ -1,0 +1,10 @@
+const std = @import("std");
+
+fn compute_value(comptime condition: bool) u32 {
+    return if (condition) 10 else 20;
+}
+
+pub fn main() void {
+    const result = compute_value(true);
+    std.debug.print("Computed value is: {}\n", .{result});
+}
