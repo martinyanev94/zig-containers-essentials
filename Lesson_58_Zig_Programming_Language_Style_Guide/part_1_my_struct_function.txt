@@ -1,0 +1,7 @@
+const MyStruct = struct {
+    myField: i32,
+};
+
+pub fn my_function() void {
+    // function implementation
+}
