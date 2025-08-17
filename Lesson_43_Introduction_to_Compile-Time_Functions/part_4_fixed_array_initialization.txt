@@ -1,0 +1,20 @@
+const std = @import("std");
+
+const FixedArray = struct {
+    data: [10]i32,
+
+    pub fn initialize(value: i32) FixedArray {
+        var arr: FixedArray = FixedArray{ .data = .{0} };
+        for (arr.data) |*item| {
+            item.* = value;
+        }
+        return arr;
+    }
+};
+
+pub fn main() void {
+    const arr = FixedArray.initialize(42);
+    for (arr.data) |item| {
+        std.debug.print("Value: {}\n", .{item});
+    }
+}
