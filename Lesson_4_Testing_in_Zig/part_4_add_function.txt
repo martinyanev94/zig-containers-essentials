@@ -1,0 +1,17 @@
+const std = @import("std");
+
+pub fn add(a: i32, b: i32) i32 {
+    return a + b;
+}
+
+test "add function" {
+    const result = add(2, 3);
+    std.testing.expect(result == 5);
+}
+
+// Benchmarking the add function
+benchmark "add benchmark" {
+    for (std.range(0, 1_000_000)) |i| {
+        add(i, i + 1);
+    }
+}
