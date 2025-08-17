@@ -1,0 +1,9 @@
+const std = @import("std");
+
+pub fn main() !void {
+    const file = try std.fs.openFile("example.txt", .{});
+    defer file.close();
+
+    const content = try file.readAll();
+    std.debug.print("File content: {}\n", .{content});
+}
