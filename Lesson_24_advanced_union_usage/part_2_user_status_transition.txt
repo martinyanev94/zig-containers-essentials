@@ -1,0 +1,19 @@
+const User = union(enum) {
+    Active: bool,
+    Inactive: f64,
+    Deleted: void,
+
+    pub fn update(&self: *User, newStatus: User) void {
+        switch (newStatus) {
+            User.Active => |active| {
+                self.* = User.Active;
+            },
+            User.Inactive => |inactiveDuration| {
+                self.* = User.Inactive; // Switch to inactive state
+            },
+            User.Deleted => {
+                self.* = User.Deleted; // Mark as deleted
+            },
+        }
+    },
+};
