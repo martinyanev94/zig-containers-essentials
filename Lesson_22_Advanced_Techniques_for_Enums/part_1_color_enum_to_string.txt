@@ -1,0 +1,24 @@
+const std = @import("std");
+
+const Color = enum {
+    Red,
+    Green,
+    Blue,
+};
+
+fn colorToString(color: Color) ![]const u8 {
+    switch (color) {
+        Color.Red => return "Red",
+        Color.Green => return "Green",
+        Color.Blue => return "Blue",
+    }
+}
+
+pub fn main() void {
+    const myColor: Color = Color.Green;
+    const colorName = colorToString(myColor) catch |err| {
+        std.debug.print("Error: {}\n", .{err});
+        return;
+    };
+    std.debug.print("Selected Color: {}: {}\n", .{myColor, colorName});
+}
