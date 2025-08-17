@@ -1,0 +1,19 @@
+const std = @import("std");
+const expect = std.testing.expect;
+
+test "tuple" {
+    const values = .{
+        @as(u32, 1234),
+        @as(f64, 12.34),
+        true,
+        "hi",
+    };
+
+    try expect(values[0] == 1234);
+    try expect(values.len == 4);
+    try expect(values.@"3"[0] == 'h');
+}
+inline for (values, 0..) |v, i| {
+    if (i != 2) continue;
+    try expect(v);
+}
