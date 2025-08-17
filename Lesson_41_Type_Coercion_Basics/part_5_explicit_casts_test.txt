@@ -1,0 +1,8 @@
+const std = @import("std");
+const expect = std.testing.expect;
+
+test "explicit casts using builtin functions" {
+    const x: u32 = 10;
+    const casted: u8 = @intCast(u8, x); // Explicitly casting u32 to u8.
+    try expect(casted == 10); // Expecting the cast to be successful.
+}
