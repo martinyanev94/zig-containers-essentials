@@ -1,0 +1,15 @@
+const std = @import("std");
+
+fn simulateNetworkRequest() !void {
+    std.debug.print("Simulating a network request...\n", .{});
+    // Simulate some network delay using a sleep
+    const wantDelay: u32 = 1000; // 1 second
+    std.time.sleep(u64(wantDelay) * std.time.ns_per_s);
+    std.debug.print("Network request completed!\n", .{});
+}
+
+pub fn main() void {
+    const handle = async simulateNetworkRequest();
+    _ = await handle; // Wait for the completion of the async operation
+    std.debug.print("Main function completed!\n", .{});
+}
