@@ -1,0 +1,18 @@
+const ComplexTypeTag = enum {
+    ok,
+    not_ok,
+};
+
+const ComplexType = union(ComplexTypeTag) {
+    ok: u8,
+    not_ok: void,
+};
+var c = ComplexType{ .ok = 42 };
+
+switch (c) {
+    ComplexTypeTag.ok => |value| { 
+        // Handle successful case
+        try expect(value == 42);
+    },
+    ComplexTypeTag.not_ok => unreachable, // Handle failure case, if it occurs
+}
