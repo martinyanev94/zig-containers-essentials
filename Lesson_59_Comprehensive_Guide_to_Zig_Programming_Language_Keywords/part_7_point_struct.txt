@@ -1,0 +1,8 @@
+const Point = struct {
+    x: i32,
+    y: i32,
+};
+
+fn createPoint(x: i32, y: i32) Point {
+    return Point{x, y};
+}
