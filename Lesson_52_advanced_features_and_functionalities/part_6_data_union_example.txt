@@ -1,0 +1,21 @@
+const std = @import("std");
+
+const Data = union(enum) {
+    Int: i32,
+    Float: f32,
+    Str: []const u8,
+};
+
+fn printData(data: Data) void {
+    switch (data) {
+        Data.Int => |value| std.debug.print("Data is Int: {}\n", .{value}),
+        Data.Float => |value| std.debug.print("Data is Float: {}\n", .{value}),
+        Data.Str => |value| std.debug.print("Data is String: {}\n", .{value}),
+    }
+}
+
+pub fn main() void {
+    printData(Data.Int(42));
+    printData(Data.Float(3.14));
+    printData(Data.Str("Hello, Zig!"));
+}
