@@ -1,0 +1,6 @@
+const std = @import("std");
+
+fn read_file(filename: *const u8) ![]u8 {
+    const file = try std.fs.readFile(filename);
+    return file;
+}
