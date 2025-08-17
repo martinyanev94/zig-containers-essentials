@@ -1,0 +1,14 @@
+const std = @import("std");
+const expect = std.testing.expect;
+
+fn addNumbers(T: type)(a: T, b: T) T {
+    return a + b; // Coercion happens if T can be widened
+}
+
+test "generic coercion" {
+    const intResult = addNumbers(i32, 10, 20);
+    const floatResult = addNumbers(f32, 1.0, 2.5);
+
+    try expect(intResult == 30);
+    try expect(floatResult == 3.5);
+}
