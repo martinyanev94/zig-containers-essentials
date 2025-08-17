@@ -1,0 +1,15 @@
+fn checkUserStatus(status: UserStatus) void {
+    switch (status) {
+        UserStatus.Active => |isActive| {
+            if (isActive) {
+                std.debug.print("User is active.\n", .{});
+            }
+        },
+        UserStatus.Inactive => |timeInactive| {
+            std.debug.print("User has been inactive for {:.2f} days.\n", .{timeInactive});
+        },
+        UserStatus.Deleted => {
+            std.debug.print("User account has been deleted.\n", .{});
+        },
+    }
+}
