@@ -1,0 +1,6 @@
+fn uninitialized_example() i32 {
+    var uninitialized_variable: i32; // Declared but not initialized
+    return uninitialized_variable; // This could return any random value
+}
+
+std.debug.print("Random value: {}\n", .{uninitialized_example()});
