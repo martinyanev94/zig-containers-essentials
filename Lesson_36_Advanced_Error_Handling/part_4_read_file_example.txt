@@ -1,0 +1,8 @@
+const std = @import("std");
+
+pub fn main() !void {
+    const data = try readData("example.txt");
+    defer std.heap.page_allocator.free(data); 
+
+    // Additional code...
+}
