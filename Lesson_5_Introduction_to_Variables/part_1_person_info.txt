@@ -1,0 +1,11 @@
+const std = @import("std");
+
+pub fn main() void {
+    var age: u32 = 30; // Declaring a variable of type unsigned 32-bit integer
+    const name: []const u8 = "John Doe"; // Declaring a constant string
+
+    // Outputting the values
+    std.debug.print("Name: {}\n", .{name});
+    std.debug.print("Age: {}\n", .{age});
+}
+age = 32; // Updating the variable
