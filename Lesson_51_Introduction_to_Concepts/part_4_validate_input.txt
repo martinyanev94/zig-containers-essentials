@@ -1,0 +1,11 @@
+const std = @import("std");
+
+fn validate_input(num: i32) void {
+    if (num < 0) {
+        @compileError("Negative numbers are not allowed.");
+    }
+}
+
+pub fn main() void {
+    validate_input(-5); // This will trigger a compile error
+}
