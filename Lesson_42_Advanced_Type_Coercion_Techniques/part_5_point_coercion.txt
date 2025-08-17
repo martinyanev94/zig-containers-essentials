@@ -1,0 +1,25 @@
+const std = @import("std");
+const expect = std.testing.expect;
+
+const Point = struct {
+    x: f32,
+    y: f32,
+};
+
+const PointInt = struct {
+    x: i32,
+    y: i32,
+};
+
+fn fromPointToPointInt(pt: Point) PointInt {
+    return PointInt{ .x = @intCast(i32, pt.x), .y = @intCast(i32, pt.y) }; // Explicit coercion to i32
+}
+
+test "struct coercion" {
+    const pt: Point = Point{ .x = 10.5, .y = 20.5 };
+    
+    const ptInt = fromPointToPointInt(pt);
+    
+    try expect(ptInt.x == 10); // Truncated conversion
+    try expect(ptInt.y == 20); // Truncated conversion
+}
