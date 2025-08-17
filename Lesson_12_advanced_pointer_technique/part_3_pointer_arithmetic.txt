@@ -1,0 +1,10 @@
+const std = @import("std");
+
+pub fn main() void {
+    var arr: [5]i32 = [5]i32{10, 20, 30, 40, 50};
+    var ptr: *i32 = &arr[0]; // Pointer to the first element
+
+    for (0..arr.len) |i| {
+        std.debug.print("Value at ptr + {}: {}\n", .{i, *(ptr + i)}); // Accessing using pointer arithmetic
+    }
+}
