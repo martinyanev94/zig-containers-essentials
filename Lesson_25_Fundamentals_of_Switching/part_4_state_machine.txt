@@ -1,0 +1,37 @@
+const std = @import("std");
+
+const Command = enum {
+    Start,
+    Stop,
+    Pause,
+    Resume,
+};
+
+pub fn main() !void {
+    var currentState = Command.Start;
+
+    // Labeled switch statement.
+    command: switch (currentState) {
+        Command.Start => {
+            std.debug.print("Starting...\n", .{});
+            // Continue to the next state
+            currentState = Command.Pause;
+            continue :command;
+        },
+        Command.Pause => {
+            std.debug.print("Paused...\n", .{});
+            // You can break out of the switch at any point
+            break :command;
+        },
+        Command.Resume => {
+            std.debug.print("Resuming...\n", .{});
+            // Continue or break as necessary
+            continue :command;
+        },
+        Command.Stop => {
+            std.debug.print("Stopping...\n", .{});
+            break :command;
+        },
+        else => unreachable, // Handles unexpected commands
+    }
+}
