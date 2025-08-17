@@ -1,0 +1,24 @@
+const std = @import("std");
+
+fn alignedStructAllocator(allocator: *std.mem.Allocator) !*MyAlignedStruct {
+    // Allocate with a specified alignment
+    const alignment = @alignOf(MyAlignedStruct);
+    const structPtr = try allocator.create(MyAlignedStruct, 1, alignment);
+    return structPtr;
+}
+
+pub const MyAlignedStruct = struct {
+    a: u32,
+    b: u64,
+};
+
+pub fn main() !void {
+    const allocator = std.heap.page_allocator;
+
+    const structPtr = try alignedStructAllocator(allocator);
+    structPtr.* = MyAlignedStruct{ .a = 1, .b = 2u64 };
+    
+    std.debug.print("Struct: a = {}, b = {}\n", .{structPtr.a, structPtr.b});
+    
+    allocator.destroy(structPtr);
+}
