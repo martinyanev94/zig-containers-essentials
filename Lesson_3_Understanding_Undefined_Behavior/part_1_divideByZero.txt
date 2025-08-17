@@ -1,0 +1,9 @@
+fn divide(x: i32, y: i32) i32 {
+    if (y == 0) {
+        // This line should result in a runtime error
+        return 0; 
+    }
+    return x / y;
+}
+
+const result = divide(10, 0); // Call with a divisor of zero
