@@ -1,0 +1,11 @@
+const std = @import("std");
+const expect = std.testing.expect;
+
+test "peer resolve int widening" {
+    const a: i8 = 12;
+    const b: i16 = 34;
+
+    const c = a + b; // Here, a gets broadened to match b’s type.
+    try expect(c == 46);
+    try expect(@TypeOf(c) == i16);
+}
