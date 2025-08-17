@@ -1,0 +1,10 @@
+const std = @import("std");
+const expect = std.testing.expect;
+
+const Tuple = struct { u8, u8 };
+
+test "coercion from homogeneous tuple to array" {
+    const tuple: Tuple = .{ 5, 6 }; // A tuple containing two u8 values.
+    const array: [2]u8 = tuple; // This tuple gets coerced into an array of u8.
+    _ = array; // Using array to ensure the operation succeeded.
+}
