@@ -1,0 +1,10 @@
+const std = @import("std");
+
+pub fn main() void {
+    const value1 = 42;
+    const value2 = 24;
+
+    @compileLog("Value 1: {}", value1);
+    @compileLog("Value 2: {}", value2);
+    @compileLog("Sum of values: {}", value1 + value2);
+}
