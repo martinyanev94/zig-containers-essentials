@@ -1,0 +1,8 @@
+const c = @cImport({
+    @cInclude("math.h");
+});
+
+pub fn main() void {
+    const result = c.sqrt(16.0);
+    std.debug.print("The square root of 16 is: {}\n", .{result});
+}
