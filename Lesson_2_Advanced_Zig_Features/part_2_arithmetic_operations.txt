@@ -1,0 +1,12 @@
+const std = @import("std");
+
+pub fn main() void {
+    const num1: i128 = 9223372036854775807; // Max for i64
+    const num2: i128 = 2;
+
+    const sum = num1 + num2;
+    const product = num1 * num2;
+
+    std.debug.print("Sum: {}\n", .{sum});
+    std.debug.print("Product: {}\n", .{product});
+}
