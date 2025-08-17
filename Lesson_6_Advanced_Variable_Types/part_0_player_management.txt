@@ -1,0 +1,24 @@
+const std = @import("std");
+
+const Player = struct {
+    var score: u32 = 0; // Container-level variable
+    var level: u32 = 1; // Container-level variable
+ 
+    pub fn increaseScore(self: *Player, points: u32) void {
+        self.score += points;
+    }
+
+    pub fn levelUp(self: *Player) void {
+        self.level += 1;
+    }
+};
+
+pub fn main() void {
+    var player = Player{};
+    
+    player.increaseScore(10);
+    player.levelUp();
+
+    std.debug.print("Player Score: {}\n", .{player.score});
+    std.debug.print("Player Level: {}\n", .{player.level});
+}
