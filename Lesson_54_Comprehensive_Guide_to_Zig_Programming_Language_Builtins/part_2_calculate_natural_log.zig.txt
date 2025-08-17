@@ -1,0 +1,15 @@
+const std = @import("std");
+
+pub fn main() void {
+    const numbers: [5]f64 = .{1.0, 2.0, 3.0, 4.0, 5.0};
+    var stdout = std.io.getStdOut().writer();
+    
+    for (numbers) |number| {
+        if (number > 0) {
+            const natural_log = @ln(number);
+            stdout.print("The natural logarithm of {} is {}\n", .{number, natural_log});
+        } else {
+            stdout.print("Cannot compute the logarithm of a non-positive number: {}\n", .{number});
+        }
+    }
+}
