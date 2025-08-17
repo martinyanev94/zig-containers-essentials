@@ -1,0 +1,5 @@
+fn printNumbers(upTo: usize) void {
+    for (i32 i = 0; i < @intCast(i32, upTo); i += 1) {
+        std.debug.print("{}\n", .{i});
+    }
+}
