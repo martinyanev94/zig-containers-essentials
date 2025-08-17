@@ -1,0 +1,39 @@
+const std = @import("std");
+
+const Shape = union(enum) {
+    Circle: struct {
+        radius: f32,
+    },
+    Rectangle: struct {
+        width: f32,
+        height: f32,
+    },
+};
+
+fn isValid(shape: Shape) bool {
+    switch (shape) {
+        Circle => |c| {
+            return c.radius >= 0;
+        },
+        Rectangle => |r| {
+            return r.width >= 0 and r.height >= 0;
+        },
+    }
+}
+
+pub fn main() void {
+    const circle = Shape{ .Circle = Shape.Circle{ .radius = 10.0 } };
+    const rectangle = Shape{ .Rectangle = Shape.Rectangle{ .width = -5.0, .height = 10.0 } };
+
+    if (isValid(circle)) {
+        std.debug.print("Circle is valid with radius: {}\n", .{circle.Circle.radius});
+    } else {
+        std.debug.print("Invalid Circle!\n", .{});
+    }
+
+    if (isValid(rectangle)) {
+        std.debug.print("Rectangle is valid with dimensions: {} x {}\n", .{rectangle.Rectangle.width, rectangle.Rectangle.height});
+    } else {
+        std.debug.print("Invalid Rectangle!\n", .{});
+    }
+}
