@@ -1,0 +1,7 @@
+test "iterate over an array" {
+    var sum: usize = 0;
+    for (message) |byte| {
+        sum += byte;
+    }
+    try expect(sum == 'h' + 'e' + 'l' * 2 + 'o');
+}
