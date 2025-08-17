@@ -1,0 +1,27 @@
+const std = @import("std");
+
+const ShapeType = enum {
+    Circle,
+    Square,
+    Triangle,
+};
+
+const Shape = union(enum) {
+    Circle: struct { radius: f32 },
+    Square: struct { side: f32 },
+    Triangle: struct { base: f32, height: f32 },
+};
+
+fn calculateArea(shape: Shape) f32 {
+    switch (shape) {
+        Shape.Circle => return 3.14 * shape.radius * shape.radius,
+        Shape.Square => return shape.side * shape.side,
+        Shape.Triangle => return 0.5 * shape.base * shape.height,
+    }
+}
+
+pub fn main() void {
+    const myShape: Shape = Shape.Circle{ .radius = 5.0 };
+    const area = calculateArea(myShape);
+    std.debug.print("Area: {}\n", .{ area });
+}
