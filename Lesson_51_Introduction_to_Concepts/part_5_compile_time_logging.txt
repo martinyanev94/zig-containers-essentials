@@ -1,0 +1,13 @@
+const std = @import("std");
+
+pub fn main() void {
+    var count: u32 = 5;
+
+    // This will log the value at compile time
+    @compileLog("Current count before increment: {}", count);
+
+    count += 1;
+
+    @compileLog("Current count after increment: {}", count);
+    std.debug.print("Final count is: {}\n", .{count});
+}
