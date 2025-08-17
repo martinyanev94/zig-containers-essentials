@@ -1,0 +1,9 @@
+const std = @import("std");
+
+pub fn main() void {
+    const x: f64 = 1.0;
+    const y: f64 = 2.0;
+    const result = x + y;
+
+    std.debug.print("Strict mode addition: {}\n", .{result});
+}
