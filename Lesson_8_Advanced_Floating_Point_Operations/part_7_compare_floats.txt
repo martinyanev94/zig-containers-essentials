@@ -1,0 +1,17 @@
+const std = @import("std");
+
+pub fn areEqual(a: f64, b: f64, epsilon: f64) bool {
+    return std.math.abs(a - b) < epsilon;
+}
+
+pub fn main() void {
+    const a: f64 = 1.0;
+    const b: f64 = 1.0000000001;
+    const epsilon: f64 = 1e-10;
+
+    if (areEqual(a, b, epsilon)) {
+        std.debug.print("Values are considered equal based on epsilon!\n", .{});
+    } else {
+        std.debug.print("Values are not equal.\n", .{});
+    }
+}
