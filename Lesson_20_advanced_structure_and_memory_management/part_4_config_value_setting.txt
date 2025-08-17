@@ -1,0 +1,17 @@
+const std = @import("std");
+const ErrInvalidValue = error.InvalidValue;
+
+const Config = struct {
+    value: u32,
+    pub fn setValue(self: *Config, new_value: u32) !void {
+        if (new_value > 100) {
+            return ErrInvalidValue;
+        }
+        self.value = new_value;
+    }
+};
+
+test "config value setting" {
+    var config = Config{ .value = 0 };
+    try config.setValue(101); // This will fail with ErrInvalidValue
+}
