@@ -1,0 +1,16 @@
+const mat4x5 = [4][5]f32{
+    [_]f32{ 1.0, 0.0, 0.0, 0.0, 0.0 },
+    [_]f32{ 0.0, 1.0, 0.0, 1.0, 0.0 },
+    [_]f32{ 0.0, 0.0, 1.0, 0.0, 0.0 },
+    [_]f32{ 0.0, 0.0, 0.0, 1.0, 9.9 },
+};
+test "accessing a 2D array" {
+    try expect(mat4x5[3][4] == 9.9);
+    for (mat4x5, 0..) |row, row_index| {
+        for (row, 0..) |cell, column_index| {
+            if (row_index == column_index) {
+                try expect(cell == 1.0);
+            }
+        }
+    }
+}
