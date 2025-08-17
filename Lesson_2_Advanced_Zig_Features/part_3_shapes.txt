@@ -1,0 +1,19 @@
+const std = @import("std");
+
+const Shape = union(enum) {
+    Circle: struct {
+        radius: f32,
+    },
+    Rectangle: struct {
+        width: f32,
+        height: f32,
+    },
+};
+
+pub fn main() void {
+    const circle = Shape{ .Circle = Shape.Circle{ .radius = 10.0 } };
+    const rectangle = Shape{ .Rectangle = Shape.Rectangle{ .width = 5.0, .height = 10.0 } };
+
+    std.debug.print("Circle Radius: {}\n", .{circle.Circle.radius});
+    std.debug.print("Rectangle Dimensions: {} x {}\n", .{rectangle.Rectangle.width, rectangle.Rectangle.height});
+}
