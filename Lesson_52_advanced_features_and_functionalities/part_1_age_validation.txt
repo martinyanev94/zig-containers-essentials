@@ -1,0 +1,13 @@
+const std = @import("std");
+
+fn validate_age(age: i32) void {
+    if (age < 0) {
+        @compileError("Age cannot be negative!");
+    } else if (age > 130) {
+        @compileError("Age seems unrealistic. Please enter a realistic age.");
+    }
+}
+
+pub fn main() void {
+    validate_age(-1);  // This will trigger a compile error.
+}
