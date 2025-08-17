@@ -1,0 +1,14 @@
+const std = @import("std");
+const expect = std.testing.expect;
+
+fn add(a: u32, b: u32) u32 {
+    return a + b;
+}
+
+test "coercion with function parameters" {
+    const x: i16 = 10;
+    const y: u8 = 15;
+    
+    const sum = add(x, y); // Implicitly coerced to match u32.
+    try expect(sum == 25);
+}
