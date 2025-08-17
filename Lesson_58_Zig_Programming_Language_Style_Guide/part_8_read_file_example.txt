@@ -1,0 +1,9 @@
+fn read_file(file_path: []const u8) ![]u8 {
+    const file = try std.fs.openFile(file_path);
+    return try file.readToEndAlloc(std.heap.GeneralPurposeAllocator(.{}));
+}
+
+pub fn main() !void {
+    const data = try read_file("hello.txt");
+    std.debug.print("File content: {s}\n", .{data});
+}
