@@ -1,0 +1,9 @@
+test "Update user status" {
+    var userStatus = User.Active(true);
+
+    userStatus.update(User.Inactive(5.0));  // Change to inactive with a duration
+    checkUserStatus(userStatus); // Verifies that the status change worked.
+    
+    userStatus.update(User.Deleted(void)); // Marking the user as deleted
+    checkUserStatus(userStatus); // Should show the deleted message
+}
