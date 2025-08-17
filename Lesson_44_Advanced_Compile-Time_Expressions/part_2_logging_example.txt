@@ -1,0 +1,15 @@
+const std = @import("std");
+
+const ENABLE_LOGGING = true;
+
+fn log(message: []const u8) void {
+    if (ENABLE_LOGGING) {
+        std.debug.print("Log: {}\n", .{message});
+    }
+}
+
+pub fn main() void {
+    log("Program started");
+    // More logic here
+    log("Program finished");
+}
