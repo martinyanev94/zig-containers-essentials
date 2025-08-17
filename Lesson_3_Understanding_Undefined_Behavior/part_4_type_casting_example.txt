@@ -1,0 +1,10 @@
+const std = @import("std");
+
+fn cast_example() void {
+    const num: i32 = 300;
+    const num_as_u8: u8 = @intToInt(u8, num); // A potential pitfall!
+
+    std.debug.print("Number cast to u8: {}\n", .{num_as_u8});
+}
+
+cast_example();
