@@ -1,0 +1,24 @@
+const std = @import("std");
+
+pub fn main() void {
+    var allocator = std.heap.page_allocator;
+
+    const size: usize = 5;
+    const array = allocator.alloc(u32, size) catch |err| {
+        std.debug.print("Failed to allocate memory: {}\n", .{err});
+        return;
+    };
+
+    // Fill the array with values
+    for (array) |*value, i| {
+        value.* = i * 2; // Populate the array with 0, 2, 4, 6, 8
+    }
+
+    // Output the populated values
+    for (array) |value| {
+        std.debug.print("{}\n", .{value});
+    }
+
+    // Free allocated memory
+    allocator.free(array);
+}
