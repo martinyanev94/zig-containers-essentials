@@ -1,0 +1,24 @@
+const std = @import("std");
+
+macro GetSet(field: []const u8) {
+    fn get(self: *MyStruct) u32 {
+        return self.field;
+    }
+
+    fn set(self: *MyStruct, value: u32) void {
+        self.field = value;
+    }
+}
+
+const MyStruct = struct {
+    value: u32,
+
+    GetSet("value"),
+};
+
+pub fn main() void {
+    var myStruct = MyStruct{ .value = 0 };
+    myStruct.set(42);
+    
+    std.debug.print("Value: {}\n", .{myStruct.get()});
+}
