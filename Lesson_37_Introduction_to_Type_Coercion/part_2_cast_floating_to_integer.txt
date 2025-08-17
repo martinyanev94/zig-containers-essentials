@@ -1,0 +1,8 @@
+const std = @import("std");
+
+pub fn main() void {
+    const floating: f64 = 2.9;
+    const integer: i32 = @intCast(i32, floating); // Explicit cast
+
+    std.debug.print("The integer value is: {}\n", .{integer});
+}
