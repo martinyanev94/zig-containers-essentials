@@ -1,0 +1,13 @@
+const std = @import("std");
+
+pub fn main() void {
+    const firstTuple = .{ 1, 2, 3 };
+    const secondTuple = .{ 4, 5 };
+
+    const combinedTuple = firstTuple ++ secondTuple ** 2;
+
+    std.debug.print("Combined Tuple Length: {}\n", .{ combinedTuple.len });
+    for (combinedTuple) |value, index| {
+        std.debug.print("Value at {}: {}\n", .{ index, value });
+    }
+}
