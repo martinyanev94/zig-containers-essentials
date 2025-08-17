@@ -1,0 +1,22 @@
+const Variant = union(enum) {
+    int: i32,
+    boolean: bool,
+    none,
+
+    fn truthy(self: Variant) bool {
+        return switch (self) {
+            Variant.int => |x_int| x_int != 0,
+            Variant.boolean => |x_bool| x_bool,
+            Variant.none => false,
+        };
+    }
+};
+test "union method" {
+    var v1: Variant = .{ .int = 1 };
+    var v2: Variant = .{ .boolean = false };
+    var v3: Variant = .none;
+
+    try expect(v1.truthy()); // v1 is truthy (1)
+    try expect(!v2.truthy()); // v2 is falsy (false)
+    try expect(!v3.truthy()); // v3 is also falsy (none)
+}
