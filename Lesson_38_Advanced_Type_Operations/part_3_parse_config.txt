@@ -1,0 +1,21 @@
+const std = @import("std");
+
+fn parseConfig(config: ?[]const u8) ?u32 {
+    if (config) |value| {
+        const ageStr = value;
+        const parsedAge = std.fmt.parseInt(u32, ageStr, 10);
+        return parsedAge catch null; // Return null on parsing failure
+    }
+    return null; // Return null if config was not provided
+}
+
+pub fn main() void {
+    const config: ?[]const u8 = null; // Simulates missing config
+    const result = parseConfig(config);
+    
+    if (result) |age| {
+        std.debug.print("Parsed age: {}\n", .{age});
+    } else {
+        std.debug.print("Failed to parse age from config.\n", .{});
+    }
+}
