@@ -1,0 +1,7 @@
+fn checkValue(value: i32) void {
+    if (value > 0) {
+        std.debug.print("The value is positive.\n", .{});
+    } else {
+        std.debug.print("The value is non-positive.\n", .{});
+    }
+}
