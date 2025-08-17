@@ -1,0 +1,5 @@
+fn example() void {
+    defer std.debug.print("Exiting function.\n", .{});
+    std.debug.print("Inside function.\n", .{});
+    // Other operations can be placed here
+}
