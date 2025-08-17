@@ -1,0 +1,14 @@
+const std = @import("std");
+
+fn print_type(comptime T: type) void {
+    switch (T) {
+        u32 => std.debug.print("Type is u32\n", .{}),
+        f32 => std.debug.print("Type is f32\n", .{}),
+        else => std.debug.print("Unknown type\n", .{}),
+    }
+}
+
+pub fn main() void {
+    print_type(u32);
+    print_type(f32);
+}
