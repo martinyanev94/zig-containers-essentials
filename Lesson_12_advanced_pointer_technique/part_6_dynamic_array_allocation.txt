@@ -1,0 +1,18 @@
+const std = @import("std");
+
+pub fn main() void {
+    const allocator = std.heap.page_allocator;
+    const size: usize = 5;
+
+    const arr_ptr = try allocator.alloc(i32, size); // Dynamic allocation of an array
+    for (arr_ptr) |*item, index| {
+        item.* = @intCast(i32, index * 10); // Populate the array
+    }
+
+    std.debug.print("Dynamically allocated array: ");
+    for (arr_ptr) |item| {
+        std.debug.print("{} ", .{item});
+    }
+    
+    allocator.free(arr_ptr); // Free the allocated memory to prevent leaks
+}
