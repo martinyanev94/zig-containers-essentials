@@ -1,0 +1,9 @@
+const std = @import("std");
+
+pub fn main() void {
+    const largeInt: i128 = 12345678901234567890123456789012345678;
+    const largeUInt: u256 = 12345678901234567890123456789012345678901234567890;
+
+    std.debug.print("Signed Integer: {}\n", .{largeInt});
+    std.debug.print("Unsigned Integer: {}\n", .{largeUInt});
+}
