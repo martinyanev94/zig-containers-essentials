@@ -1,0 +1,14 @@
+const std = @import("std");
+
+fn modifyValue(ptr: *i32) void {
+    *ptr = 100; // Change value of the original variable
+}
+
+pub fn main() void {
+    var value: i32 = 42;
+    var ptr: *i32 = &value;
+
+    modifyValue(ptr); // Pass pointer
+
+    std.debug.print("Modified Value: {}\n", .{value}); // Check the original value
+}
