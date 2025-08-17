@@ -1,0 +1,20 @@
+const std = @import("std");
+
+const Error = error{
+    DivisionByZero,
+};
+
+fn divide(x: f64, y: f64) !f64 {
+    if (y == 0) {
+        return Error.DivisionByZero;
+    }
+    return x / y;
+}
+
+pub fn main() void {
+    const result = divide(10.0, 0.0);
+    switch (result) {
+        Error.DivisionByZero => std.debug.print("Error: Cannot divide by zero!\n", .{}),
+        |value| => std.debug.print("Result: {}\n", .{value}),
+    }
+}
