@@ -1,0 +1,6 @@
+const std = @import("std");
+
+fn decide(x: u32) void {
+    const output = if (x % 2 == 0) "Even" else "Odd";
+    std.debug.print("The number is: {}\n", .{output});
+}
