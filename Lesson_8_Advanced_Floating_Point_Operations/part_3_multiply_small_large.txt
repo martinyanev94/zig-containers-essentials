@@ -1,0 +1,9 @@
+const std = @import("std");
+
+pub fn main() void {
+    const small: f64 = 1e-10;
+    const large: f64 = 1e10;
+    const product = small * large;
+
+    std.debug.print("Multiplication result (small * large): {}\n", .{product});
+}
