@@ -1,0 +1,19 @@
+const std = @import("std");
+
+const Color = enum {
+    Red,
+    Green,
+    Blue,
+};
+
+fn printColor(color: Color) void {
+    switch (color) {
+        Color.Red => std.debug.print("Color is Red\n", .{}),
+        Color.Green => std.debug.print("Color is Green\n", .{}),
+        Color.Blue => std.debug.print("Color is Blue\n", .{}),
+    }
+}
+
+pub fn main() void {
+    printColor(Color.Green);
+}
