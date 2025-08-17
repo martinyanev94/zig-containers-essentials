@@ -1,0 +1,12 @@
+const MyAlignedStruct = struct {
+    a: u32 align(4),
+    b: u32 align(64),
+};
+
+var s = MyAlignedStruct{ .a = 1, .b = 2 };
+
+test "aligned struct fields" {
+    try expectEqual(64, @alignOf(MyAlignedStruct));
+    try expectEqual(*align(4) u32, @TypeOf(&s.a));
+    try expectEqual(*align(64) u32, @TypeOf(&s.b));
+}
