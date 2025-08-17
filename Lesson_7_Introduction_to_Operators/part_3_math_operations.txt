@@ -1,0 +1,18 @@
+const std = @import("std");
+
+pub fn main() void {
+    const a: u32 = 6;
+    const b: u32 = 7;
+    const product = a * b;
+
+    std.debug.print("6 * 7 = {}\n", .{product});
+}
+const std = @import("std");
+
+pub fn main() void {
+    const a: u32 = 56;
+    const b: u32 = 8;
+    const quotient = a / b;
+
+    std.debug.print("56 / 8 = {}\n", .{quotient});
+}
