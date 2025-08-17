@@ -1,0 +1,13 @@
+const std = @import("std");
+
+fn concurrent_access() void {
+    var shared_value: i32 = 0;
+
+    const thread1 = std.Thread.spawn(&shared_value);
+    const thread2 = std.Thread.spawn(&shared_value);
+
+    // Both threads can modify shared_value simultaneously
+    shared_value += 1; // Race condition
+}
+
+concurrent_access();
