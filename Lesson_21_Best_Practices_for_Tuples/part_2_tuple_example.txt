@@ -1,0 +1,11 @@
+const std = @import("std");
+
+pub fn main() void {
+    const myTuple = .{ 1, 2, 3, 4, 5 };
+
+    std.debug.print("Tuple length: {}\n", .{ myTuple.len });
+
+    for (myTuple) |item, index| {
+        std.debug.print("Item at index {}: {}\n", .{ index, item });
+    }
+}
