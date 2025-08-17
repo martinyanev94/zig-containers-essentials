@@ -1,0 +1,6 @@
+const std = @import("std");
+
+pub fn main() void {
+    var valid_identifier: u32 = 10; // Correct usage
+    // var 1Invalid: u32 = 20; // This will throw an error
+}
