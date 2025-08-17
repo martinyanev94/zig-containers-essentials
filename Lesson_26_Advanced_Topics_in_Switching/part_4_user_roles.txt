@@ -1,0 +1,27 @@
+const std = @import("std");
+
+const UserRole = enum {
+    Admin,
+    User,
+    Guest,
+};
+
+pub fn main() !void {
+    const role = UserRole.User;
+
+    action: switch (role) {
+        .Admin => {
+            std.debug.print("Admin access granted.\n", .{});
+            continue :action  // Might need to handle further navigation
+        },
+        .User => {
+            std.debug.print("User access granted.\n", .{});
+            continue :action  // Handle further navigation
+        },
+        .Guest => {
+            std.debug.print("Guest access granted.\n", .{});
+            break :action;  // No further navigation
+        },
+        else => unreachable,
+    }
+}
