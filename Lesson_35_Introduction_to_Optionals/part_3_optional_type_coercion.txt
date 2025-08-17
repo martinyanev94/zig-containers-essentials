@@ -1,0 +1,11 @@
+const std = @import("std");
+
+test "optional type coercion" {
+    var foo: ?i32 = null; // Start with null
+
+    // Coerce from a child type
+    foo = 1234;
+
+    // Use compile-time reflection to access the child type of the optional
+    try std.testing.expect(@typeInfo(@TypeOf(foo)).optional.child == i32);
+}
