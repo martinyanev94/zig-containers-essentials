@@ -1,0 +1,27 @@
+const std = @import("std");
+
+const DayOfWeek = enum {
+    Sunday,
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+};
+
+pub fn main() !void {
+    const today = DayOfWeek.Wednesday;
+
+    const activity = switch (today) {
+        .Sunday => "Relaxing",
+        .Monday => "Work",
+        .Tuesday => "Work",
+        .Wednesday => "Work",
+        .Thursday => "Work",
+        .Friday => "Party",
+        .Saturday => "Hiking",
+    };
+
+    std.debug.print("Today I will be: {}\n", .{activity});
+}
