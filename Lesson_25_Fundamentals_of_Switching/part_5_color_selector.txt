@@ -1,0 +1,21 @@
+const std = @import("std");
+
+const Color = enum {
+    Red,
+    Green,
+    Blue,
+    Yellow,
+};
+
+pub fn main() !void {
+    const chosenColor = Color.Green;
+
+    const colorValue = switch (chosenColor) {
+        inline .Red => 0xFF0000,
+        inline .Green => 0x00FF00,
+        inline .Blue => 0x0000FF,
+        inline .Yellow => 0xFFFF00,
+    };
+
+    std.debug.print("The RGB value of the selected color is: {:#X}\n", .{colorValue});
+}
