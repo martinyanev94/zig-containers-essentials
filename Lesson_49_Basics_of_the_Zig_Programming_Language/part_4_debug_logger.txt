@@ -1,0 +1,13 @@
+const std = @import("std");
+
+const isDebug = true;
+
+fn logMessage(msg: []const u8) void {
+    if (isDebug) {
+        std.debug.print("Debug: {}\n", .{msg});
+    }
+}
+
+pub fn main() void {
+    logMessage("This is a debug message.");
+}
