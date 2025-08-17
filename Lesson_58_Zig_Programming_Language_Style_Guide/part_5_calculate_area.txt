@@ -1,0 +1,4 @@
+// This function calculates and returns the area of a rectangle.
+pub fn calculate_area(length: f32, width: f32) f32 {
+    return length * width; // returns the computed area
+}
