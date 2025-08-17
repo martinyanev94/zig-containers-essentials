@@ -1,0 +1,12 @@
+const std = @import("std");
+
+const Color = enum {
+    Red = 1,
+    Green = 2,
+    Blue = 3,
+};
+
+pub fn main() void {
+    const myColor: Color = Color.Green;
+    std.debug.print("Selected Color: {}\n", .{myColor});
+}
