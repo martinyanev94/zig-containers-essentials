@@ -1,0 +1,8 @@
+const std = @import("std");
+
+pub fn main() void {
+    const number: f64 = 10.0;
+    const natural_log = @ln(number);
+
+    std.debug.print("The natural logarithm of {} is {}\n", .{number, natural_log});
+}
