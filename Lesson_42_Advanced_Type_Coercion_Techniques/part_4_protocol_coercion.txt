@@ -1,0 +1,25 @@
+const std = @import("std");
+const expect = std.testing.expect;
+
+const Protocol = union {
+    i32,
+    f32,
+};
+
+fn processValue(val: Protocol) f32 {
+    switch (val) {
+        i32 => |v| return f32(v); // Coerce i32 to f32
+        f32 => |v| return v; // Already f32
+    }
+}
+
+test "protocol with coercion" {
+    const intProtocol = Protocol{ .i32 = 42 };
+    const floatProtocol = Protocol{ .f32 = 3.14 };
+
+    const result1 = processValue(intProtocol);
+    const result2 = processValue(floatProtocol);
+
+    try expect(result1 == 42.0);
+    try expect(result2 == 3.14);
+}
