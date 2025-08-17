@@ -1,0 +1,11 @@
+const std = @import("std");
+
+pub fn main() void {
+    const maybeValue: ?u32 = null;
+
+    if (maybeValue) |value| {
+        std.debug.print("The value is: {}\n", .{value});
+    } else {
+        std.debug.print("No value present.\n", .{});
+    }
+}
