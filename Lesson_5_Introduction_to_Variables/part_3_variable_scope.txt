@@ -1,0 +1,19 @@
+const std = @import("std");
+
+pub fn myFunction() void {
+    var localVar: i32 = 5; // Local variable
+
+    std.debug.print("Local Variable Value: {}\n", .{localVar});
+}
+
+// Trying to access localVar here would cause an error
+const std = @import("std");
+
+const Container = struct {
+    var value: i32 = 42; // Container-level variable
+};
+
+pub fn main() void {
+    const myContainer = Container{ .value = 50 }; // Initialize with a new value
+    std.debug.print("Container Value: {}\n", .{myContainer.value});
+}
