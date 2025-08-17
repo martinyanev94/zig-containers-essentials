@@ -1,0 +1,4 @@
+fn swizzleRgbaToBgra(rgba: [4]u8) [4]u8 {
+    const r, const g, const b, const a = rgba;
+    return .{ b, g, r, a };
+}
