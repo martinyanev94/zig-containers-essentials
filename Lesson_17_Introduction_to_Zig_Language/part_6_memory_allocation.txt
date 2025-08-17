@@ -1,0 +1,17 @@
+const std = @import("std");
+
+pub fn main() void {
+    var allocator = std.heap.page_allocator;
+
+    const size: usize = 1024;
+    const buffer = allocator.alloc(u8, size) catch |err| {
+        std.debug.print("Failed to allocate memory: {}\n", .{err});
+        return;
+    };
+    
+    defer allocator.free(buffer);
+
+    // Use the allocated memory
+    buffer[0] = 42;
+    std.debug.print("First byte in buffer: {}\n", .{buffer[0]});
+}
