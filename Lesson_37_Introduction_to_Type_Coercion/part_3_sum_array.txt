@@ -1,0 +1,17 @@
+const std = @import("std");
+
+pub fn main() void {
+    const arr: [3]f64 = .{1.5, 2.5, 3.5}; // An array of floats
+    const total = sumArray(arr);
+    std.debug.print("Total sum: {}\n", .{total});
+}
+
+fn sumArray(arr: [3]f64) f64 {
+    var total: f64 = 0;
+
+    for (arr) |value| {
+        total += value; // Type coercion here is implicit
+    }
+
+    return total;
+}
