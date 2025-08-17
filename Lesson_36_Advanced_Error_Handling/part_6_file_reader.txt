@@ -1,0 +1,8 @@
+const std = @import("std");
+
+pub fn main() !void {
+    const data = try readData("example.txt") catch |err| {
+        std.debug.print("Error reading data from file: {}\n", .{err});
+        return err;
+    };
+}
