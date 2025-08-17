@@ -1,0 +1,9 @@
+const std = @import("std");
+
+pub fn main() void {
+    const a: f64 = 1.0;
+    const b: f64 = 0.0; // This will result in division by zero
+    const division_result = a / b;
+
+    std.debug.print("Division result: {}\n", .{division_result});
+}
