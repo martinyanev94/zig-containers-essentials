@@ -1,0 +1,16 @@
+const std = @import("std");
+
+pub fn processFile(filePath: []const u8) !void {
+    const file = try std.fs.openFile(filePath, .{});
+    defer std.fs.close(file); // This will ensure the file is closed when we exit the function
+
+    // Perform some operations here
+    // If an error occurs, cleanup will still happen
+
+    // Simulating an error here
+    if (true) { // Assume this is a condition that fails
+        return error.SomeOperationFailed;
+    }
+    
+    // Other logic
+}
