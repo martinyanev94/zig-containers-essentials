@@ -1,0 +1,20 @@
+const TrafficLight = enum {
+    Red,
+    Yellow,
+    Green,
+    Flashing,
+};
+const action = switch (light) {
+    .Red => "Stop",
+    .Yellow => "Prepare to stop",
+    .Green => "Go",
+    // No action defined for .Flashing
+    else => unreachable,
+};
+const action = switch (light) {
+    .Red => "Stop",
+    .Yellow => "Prepare to stop",
+    .Green => "Go",
+    .Flashing => "Yield",
+    else => unreachable,
+};
