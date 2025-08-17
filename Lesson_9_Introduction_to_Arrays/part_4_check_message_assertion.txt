@@ -1,0 +1,4 @@
+const same_message = "hello";
+comptime {
+    assert(mem.eql(u8, &message, same_message));
+}
