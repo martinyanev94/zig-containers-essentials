@@ -1,0 +1,20 @@
+const std = @import("std");
+const expect = std.testing.expect;
+
+const E = enum {
+    one,
+    two,
+    three,
+};
+
+const U = union(E) {
+    one: i32,
+    two: f32,
+    three,
+};
+
+test "coercion between unions and enums" {
+    const u = U{ .two = 12.34 }; // Here, we create a union instance.
+    const e: E = u; // Coerce union to enum.
+    try expect(e == E.two); // Testing the coercion.
+}
