@@ -1,0 +1,9 @@
+const std = @import("std");
+
+pub fn main() void {
+    const integer: i32 = 5;
+    const floating: f64 = 2.5;
+
+    const result = integer + floating; // Automatic coercion occurs here
+    std.debug.print("The result is: {}\n", .{result});
+}
