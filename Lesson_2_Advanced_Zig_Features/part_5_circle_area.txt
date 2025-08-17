@@ -1,0 +1,13 @@
+const std = @import("std");
+
+const PI: f64 = 3.141592653589793;
+
+pub fn areaOfCircle(radius: f64) f64 {
+    return PI * radius * radius;
+}
+
+pub fn main() void {
+    const radius = 10.0;
+    const area = areaOfCircle(radius);
+    std.debug.print("Area of the circle with radius {}: {}\n", .{radius, area});
+}
