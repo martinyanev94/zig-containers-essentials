@@ -1,0 +1,9 @@
+const std = @import("std");
+
+pub fn main() void {
+    const one: i32 = 10;
+    const two: f64 = 5.0;
+    const sum = one + two; // Coerced to f64 without explicit declaration
+
+    std.debug.print("The sum is: {}\n", .{sum});
+}
