@@ -1,0 +1,22 @@
+const std = @import("std");
+
+// Function to divide two integers
+pub fn divide(numerator: i32, denominator: i32) !i32 {
+    if (denominator == 0) {
+        return error.DivisionByZero;
+    }
+    return numerator / denominator;
+}
+
+// Testing the divide function
+test "divide function" {
+    const result = divide(10, 2) catch |err| {
+        std.debug.print("Error: {}\n", .{err});
+        return; // Exit on error
+    };
+    std.testing.expect(result == 5);
+
+    // Testing division by zero case
+    const division_by_zero_result = divide(10, 0);
+    std.testing.expect(division_by_zero_result == error.DivisionByZero);
+}
