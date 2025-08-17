@@ -1,0 +1,19 @@
+section .data
+    msg db 'Hello, World!', 0xA
+    len equ $ - msg          ; Calculate length of msg
+
+section .text
+    global _start
+
+_start:
+    ; Make a syscall to write
+    mov eax, 4              ; syscall number for sys_write
+    mov ebx, 1              ; file descriptor 1 is stdout
+    mov ecx, msg            ; pointer to message
+    mov edx, len            ; message length
+    int 0x80                ; make the syscall
+
+    ; Exit program
+    mov eax, 1              ; syscall number for exit
+    xor ebx, ebx            ; Exit code 0
+    int 0x80
